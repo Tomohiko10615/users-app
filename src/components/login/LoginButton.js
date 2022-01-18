@@ -2,9 +2,17 @@ import React from "react";
 
 import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
 
+import { useNavigation } from "@react-navigation/native";
+
 export const LoginButton = () => {
+
+    const navigation = useNavigation();
+
     return(
-        <TouchableOpacity activeOpacity={ 0.6 }>
+        <TouchableOpacity 
+            activeOpacity={ 0.6 }
+            onPress={() => navigation.navigate("Home")}
+        >
             <View style={ styles.button }>
                 <Text style={ styles.buttonText }>CONTINUAR</Text>
             </View>

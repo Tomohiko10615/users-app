@@ -4,13 +4,21 @@ import { View, StyleSheet, Text } from "react-native";
 
 import { LoginButton } from "../components/login/LoginButton";
 
+import { useNavigation } from "@react-navigation/native";
+
 export const LoginBottomContainer = () => {
+
+    const navigation = useNavigation();
+
     return(
         <View style={ styles.bottomContainer }>
             <LoginButton />
             <View style={ styles.navRegisterContainer }>
                 <Text style={ styles.navText }>¿No tienes cuenta?</Text>
-                <Text style={ styles.navRegisterText }>Registrate aqui</Text>
+                <Text 
+                    style={ styles.navRegisterText }
+                    onPress={ () => navigation.navigate("Register") }
+                >Registrate aqui</Text>
             </View>
         </View>
     );

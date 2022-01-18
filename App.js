@@ -1,21 +1,16 @@
+import "react-native-gesture-handler";
 import React from "react";
-import { BlockerServiceScreen } from "./src/screens/BlockerServiceScreen";
-// import { ProfileScreen } from "./src/screens/ProfileScreen";
+import { NavigationContainer } from "@react-navigation/native";
 
-// import { ConfirmRegisterScreen } from "./src/screens/ConfirmRegisterScreen";
-// import { HomeScreen } from "./src/screens/HomeScreen";
+import { AuthNavigationStack } from "./src/navigation/AuthNavigationStack";
 
-// import { LoginScreen } from './src/screens/LoginScreen';
-// import { RegisterScreen } from './src/screens/RegisterScreen';
+
 
 export default function App() {
   return(
-      // <LoginScreen />
-      // <RegisterScreen />
-      // <HomeScreen />
-      // <ConfirmRegisterScreen />
-      // <ProfileScreen />
-      <BlockerServiceScreen />
+      <NavigationContainer>
+        <AuthNavigationStack />
+      </NavigationContainer>
   );
 }
 

@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
     blockersList: {
         backgroundColor: "#f3f6f9",
         width: "100%",
-        paddingVertical: 35,
         paddingHorizontal: 20
     },
     sectionTitle: {

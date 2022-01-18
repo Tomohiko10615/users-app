@@ -69,5 +69,13 @@ export const BLOCKER_LIST = [
         distrito: "Villa el Salvador",
         reputacion: 5,
         avatar: second
+    },
+    {
+        id: 9,
+        nombres: "Juan",
+        apellidos: "Huerta Arce",
+        distrito: "Surco",
+        reputacion: 0,
+        avatar: second
     }
 ];

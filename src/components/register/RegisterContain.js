@@ -6,8 +6,11 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { RegisterBottomContainer } from "../../containers/RegisterBottomContainer";
 
 import { CustomInput } from "../login/CustomInput";
+import { useNavigation } from "@react-navigation/native";
 
 export const RegisterContain = () => {
+
+    const navigation = useNavigation();
 
     const hole = "";
 
@@ -15,7 +18,8 @@ export const RegisterContain = () => {
         <View style={ styles.registerContain }>
             <View style={ styles.containHeader }>
                 <Icon
-                style={ styles.iconBack } 
+                    onPress={() => navigation.goBack()}
+                    style={ styles.iconBack } 
                     name="arrow-back"
                     size={ 20 }
                 />
