@@ -1,13 +1,12 @@
 import React from "react";
 
-import { TouchableOpacity, StyleSheet, View, Text } from "react-native";
+import { TouchableOpacity, StyleSheet, Text } from "react-native";
 
-export const RegisterButton = () => {
+export const RegisterButton = ({ action }) => {
+
     return(
-        <TouchableOpacity>
-            <View style={ styles.button }>
-                <Text style={ styles.buttonText }>REGISTRAR</Text>
-            </View>
+        <TouchableOpacity onPress={ action } style={ styles.button }>
+            <Text style={ styles.buttonText }>REGISTRAR</Text>
         </TouchableOpacity>
     );
 }

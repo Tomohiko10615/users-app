@@ -1,11 +1,11 @@
 import React from "react";
 
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Keyboard } from "react-native";
 
 import Icon from "react-native-vector-icons/Ionicons";
 import { RegisterBottomContainer } from "../../containers/RegisterBottomContainer";
 
-import { CustomInput } from "../login/CustomInput";
+import { useForm } from "../../hooks/useForm";
 import { useNavigation } from "@react-navigation/native";
 
 export const RegisterContain = () => {
@@ -13,6 +13,26 @@ export const RegisterContain = () => {
     const navigation = useNavigation();
 
     const hole = "";
+
+    const { firstname, lastname, email, district, phone, password, onChange } = useForm({
+        firstname: "",
+        lastname: "",
+        email: "",
+        district: "",
+        phone: "",
+        password: ""
+    });
+
+    const onRegister = () => {
+        Keyboard.dismiss();
+
+        if( firstname == "" || lastname == "" || email == "" || district == "" || phone == "" || password == "") {
+            console.log("Entradas de texto vacias");
+        } else {
+            console.log("Correcto");
+            navigation.replace("Home");
+        }
+    }
 
     return(
         <View style={ styles.registerContain }>
@@ -26,19 +46,53 @@ export const RegisterContain = () => {
                 <Text style={ styles.registerTitle }>REGISTRO</Text>
                 <Text>{ hole }</Text>
             </View>
-            <CustomInput 
-                using="Nombres"
+            <TextInput 
+                placeholder="Nombres"
+                style={ styles.input }
+                onChangeText={ (value) => onChange(value, "firstname") }
+                value={ firstname }
+                onSubmitEditing={ onRegister }
             />
-            <CustomInput 
-                using="Apellidos"
+            <TextInput 
+                placeholder="Apellidos"
+                style={ styles.input }
+                onChangeText={ (value) => onChange(value, "lastname") }
+                value={ lastname }
+                onSubmitEditing={ onRegister }
             />
-            <CustomInput 
-                using="Correo electronico"
+            <TextInput 
+                placeholder="Correo electronico"
+                style={ styles.input }
+                onChangeText={ (value) => onChange(value, "email") }
+                value={ email }
+                onSubmitEditing={ onRegister }
             />
-            <CustomInput 
-                using="Espacio para celular y distrito"
+            <TextInput 
+                placeholder="Contraseña"
+                style={ styles.input }
+                onChangeText={ (value) => onChange(value, "password") }
+                value={ password }
+                onSubmitEditing={ onRegister }
+                secureTextEntry={ true }
             />
-            <RegisterBottomContainer />
+            <TextInput 
+                placeholder="Celular"
+                style={ styles.input }
+                onChangeText={ (value) => onChange(value, "phone") }
+                value={ phone }
+                onSubmitEditing={ onRegister }
+            />
+            <TextInput 
+                placeholder="Distrito"
+                style={ styles.input }
+                onChangeText={ (value) => onChange(value, "district") }
+                value={ district }
+                onSubmitEditing={ onRegister }
+            />
+
+            <RegisterBottomContainer
+                action={ onRegister }
+            />
         </View>
     );
 }
@@ -66,5 +120,13 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: "bold",
         color: "#ffffff"
+    },
+    input: {
+        width: 300,
+        height: 40,
+        backgroundColor: "#ffffff",
+        borderRadius: 15,
+        paddingHorizontal: 15,
+        marginBottom: 30
     }
 });

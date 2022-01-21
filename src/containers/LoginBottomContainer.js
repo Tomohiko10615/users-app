@@ -11,27 +11,17 @@ export const LoginBottomContainer = () => {
     const navigation = useNavigation();
 
     return(
-        <View style={ styles.bottomContainer }>
-            <LoginButton />
-            <View style={ styles.navRegisterContainer }>
-                <Text style={ styles.navText }>¿No tienes cuenta?</Text>
-                <Text 
-                    style={ styles.navRegisterText }
-                    onPress={ () => navigation.navigate("Register") }
-                >Registrate aqui</Text>
-            </View>
+        <View style={ styles.navRegisterContainer }>
+            <Text style={ styles.navText }>¿No tienes cuenta?</Text>
+            <Text 
+                style={ styles.navRegisterText }
+                onPress={ () => navigation.navigate("Register") }
+            >Registrate aqui</Text>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    bottomContainer: {
-        width: "100%",
-        height: 300,
-        alignItems: "center",
-        flexDirection: "column",
-        justifyContent: "space-between"
-    },
     navRegisterContainer: {
         flexDirection: "row"
     },

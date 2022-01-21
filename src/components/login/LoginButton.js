@@ -11,7 +11,7 @@ export const LoginButton = () => {
     return(
         <TouchableOpacity 
             activeOpacity={ 0.6 }
-            onPress={() => navigation.navigate("Home")}
+            onPress={() => navigation.replace("Home")}
         >
             <View style={ styles.button }>
                 <Text style={ styles.buttonText }>CONTINUAR</Text>

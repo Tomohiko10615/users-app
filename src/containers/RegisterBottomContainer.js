@@ -6,7 +6,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 
 import { RegisterButton } from "../components/register/RegisterButton";
 
-export const RegisterBottomContainer = () => {
+export const RegisterBottomContainer = ({ action }) => {
 
     const [ checkTerms, setCheckTerms ] = useState(false);
     const [ checkPoliticy, setCheckPoliticy ] = useState(false);
@@ -44,7 +44,9 @@ export const RegisterBottomContainer = () => {
                     <Text style={ styles.rulesText }>Politicas de privacidad</Text>
                 </View>
             </View>
-            <RegisterButton />
+            <RegisterButton 
+                action={ action }
+            />
         </View>
     );
 }
@@ -52,7 +54,7 @@ export const RegisterBottomContainer = () => {
 const styles = StyleSheet.create({
     bottomContainer: {
         width: "100%",
-        height: 200,
+        height: 130,
         alignItems: "center",
         justifyContent: "space-between"
     },
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
         flexDirection: "row"
     },
     checkContainer: {
-        paddingTop: 50
+        paddingTop: 10
     }
 });
 

@@ -5,7 +5,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { AuthNavigationStack } from "./src/navigation/AuthNavigationStack";
 
 
-
 export default function App() {
   return(
       <NavigationContainer>
