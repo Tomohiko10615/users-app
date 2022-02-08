@@ -11,7 +11,7 @@ export const HeaderCustomStack = () => {
     const navigation = useNavigation();
 
     return (
-        <SafeAreaView style={{backgroundColor: "transparent", position: "absolute", top: -15, left: 0}}>
+        <SafeAreaView style={{ backgroundColor: "transparent", position: "absolute", bottom: 4, left: 0 }}>
             <TouchableHighlight underlayColor="#dddddd">
                 <Icon 
                     name="arrow-back-sharp"
