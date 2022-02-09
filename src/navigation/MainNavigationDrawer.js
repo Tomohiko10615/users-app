@@ -12,7 +12,9 @@ import { ProccessNavigationStack } from "./ProccessNavigationStack";
 
 const MainDrawer = createDrawerNavigator();
 
-export const MainNavigationDrawer = () => {
+export const MainNavigationDrawer = (props) => {
+    const { serviceId } = props;
+    console.log(serviceId)
     return(
         <MainDrawer.Navigator
             drawerContent={ (props) => <Menu {...props} /> }

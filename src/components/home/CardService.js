@@ -4,14 +4,17 @@ import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 
 import { useNavigation } from "@react-navigation/native"
 
-export const CardService = ({ source, service }) => {
+export const CardService = ({ source, service, serviceId }) => {
 
     const uppertext = service.toUpperCase();
     const navigation = useNavigation();
 
     return(
         <TouchableOpacity
-             onPress={ () => navigation.navigate("Proccess") }
+             onPress={ () => navigation.navigate("Proccess", {
+                screen: 'Blockers',
+                params: { serviceId: serviceId }
+              }) }
         >
             <View style={ styles.card }>
                 <Image 

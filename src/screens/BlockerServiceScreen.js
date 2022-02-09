@@ -1,10 +1,35 @@
-import React from "react";
-
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BlockerItem } from "../components/BlockersList/BlockerItem";
 
-export const BlockerServiceScreen = () => {
+
+
+export const BlockerServiceScreen = ({route}) => {
+    const { serviceId } = route.params;
+    const [blockersList, setBlockersList] = useState([]);
+    const distritoId = 5;
+
+    async function getBlockers() {
+        try {
+          const url = "https://pasteblock.herokuapp.com/api/listar/" + serviceId + "/" + distritoId + "?orden=1&inicio=0&total=5";
+          const response = await fetch(url);
+          const result = await response.json();
+          setBlockersList(result);
+         
+          return response;
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    
+    useLayoutEffect(() => {
+        (async () => {
+        await getBlockers();
+        })();
+    }, [serviceId]);
+
+
     return(
         <SafeAreaView>
             <ScrollView nestedScrollEnabled={ true }>
@@ -17,7 +42,7 @@ export const BlockerServiceScreen = () => {
                 </View>
                 <View style={ styles.blockerListContainer }>
                     {/* Flatlist Component's error in console: advisament */}
-                    <BlockerItem />
+                    <BlockerItem blockersList={blockersList}/>
                 </View>
             </ScrollView>
         </SafeAreaView>

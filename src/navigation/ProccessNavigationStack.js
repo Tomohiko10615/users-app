@@ -7,7 +7,9 @@ import { HeaderCustomStack } from "../components/HeaderCustomStack";
 
 const ProccessStack = createStackNavigator();
 
-export const ProccessNavigationStack = () => {
+export const ProccessNavigationStack = (props) => {
+    const { serviceId } = props;
+    console.log(serviceId);
     return (
         <ProccessStack.Navigator 
             screenOptions={{
@@ -18,7 +20,8 @@ export const ProccessNavigationStack = () => {
                 }
             }}
         >
-            <ProccessStack.Screen name="Blockers" component={ BlockerServiceScreen }/>
+            <ProccessStack.Screen name="Blockers" component={ BlockerServiceScreen }
+            />
         </ProccessStack.Navigator>
     );
 }
