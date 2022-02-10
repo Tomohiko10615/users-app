@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 import { View, Text, StyleSheet, Alert, TouchableOpacity, VirtualizedList } from "react-native";
 
-export const ButtonSelected = () => {
+export const ButtonSelected = (props) => {
+    const { profileData, avatar, serviceId } = props;
+    const navigation = useNavigation();
     return (
-        <TouchableOpacity 
-            onPress={ () => {Alert.alert("Go to next screen!")} }
-        >
-            <View style={ styles.button }>
-                <Text style={ styles.buttonText }>Ver Perfil</Text>
-            </View>
-        </TouchableOpacity>
+            <TouchableOpacity 
+                onPress={ () => { navigation.navigate("BlockerDetailsNav", {
+                    screen: 'BlockerDetails',
+                    params: { profileData: profileData, avatar: avatar, serviceId: serviceId }
+                  })} }
+            >
+                <View style={ styles.button }>
+                    <Text style={ styles.buttonText }>Ver Perfil</Text>
+                </View>
+            </TouchableOpacity>
     );
 }
 

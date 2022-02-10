@@ -6,7 +6,7 @@ import { BlockerItem } from "../components/BlockersList/BlockerItem";
 
 
 export const BlockerServiceScreen = ({route}) => {
-    const { serviceId } = route.params;
+    const { service, serviceId } = route.params;
     const [blockersList, setBlockersList] = useState([]);
     const distritoId = 5;
 
@@ -36,13 +36,13 @@ export const BlockerServiceScreen = ({route}) => {
                 <View style={ styles.blockersList }>
                     <View style={ styles.ubicationRoute }>
                         <Text style={ styles.label }>Categoria: </Text>
-                        <Text style={ styles.category } >Servicio seleccionado</Text>
+                        <Text style={ styles.category } >{ service }</Text>
                     </View>
                     <Text style={ styles.sectionTitle }>BLOCKERS</Text>
                 </View>
                 <View style={ styles.blockerListContainer }>
                     {/* Flatlist Component's error in console: advisament */}
-                    <BlockerItem blockersList={blockersList}/>
+                    <BlockerItem blockersList={blockersList} serviceId={serviceId}/>
                 </View>
             </ScrollView>
         </SafeAreaView>

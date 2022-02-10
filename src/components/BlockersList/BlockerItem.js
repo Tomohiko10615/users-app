@@ -8,7 +8,7 @@ import { BLOCKER_LIST } from "../../data/BlockerInfo";
 
 
 
-const Blocker = ({ nombres, apellidos, avatar, reputacion }) => (
+const Blocker = ({ nombres, apellidos, avatar, reputacion, profileData, serviceId }) => (
     <View style={ styles.blockerContainer }>
         <Image
             style={ styles.userAvatar } 
@@ -26,19 +26,14 @@ const Blocker = ({ nombres, apellidos, avatar, reputacion }) => (
                     />
                 </View>
             </View>
-            <ButtonSelected />
+            <ButtonSelected profileData={profileData} avatar={avatar} serviceId={serviceId}/>
         </View>
     </View>
 );
 
-export const BlockerItem = ({blockersList}) => {
+export const BlockerItem = ({blockersList, serviceId}) => {
 
-    console.log("a")
-    console.log(blockersList)
-    console.log("a")
     const hostUrl = "https://pasteblock.herokuapp.com/uploads/";
-
-
 
     const renderBlocker = ({ item }) => {
         const imgUrl = hostUrl + item.foto;
@@ -48,6 +43,8 @@ export const BlockerItem = ({blockersList}) => {
                 apellidos={ item.usuario.apellido }
                 avatar={ imgUrl }
                 reputacion={ item.reputacion }
+                profileData = { item }
+                serviceId={serviceId}
             />
         );
     }

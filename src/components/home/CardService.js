@@ -13,7 +13,7 @@ export const CardService = ({ source, service, serviceId }) => {
         <TouchableOpacity
              onPress={ () => navigation.navigate("Proccess", {
                 screen: 'Blockers',
-                params: { serviceId: serviceId }
+                params: { service: service, serviceId: serviceId }
               }) }
         >
             <View style={ styles.card }>
