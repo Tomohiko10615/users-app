@@ -6,6 +6,7 @@ import { LoginScreen } from "../screens/LoginScreen";
 import { RegisterScreen } from "../screens/RegisterScreen";
 
 import { MainNavigationDrawer } from "../navigation/MainNavigationDrawer"
+import { SuccessNavigationStack } from "./SuccessStack";
 
 const AuthStack = createStackNavigator();
 
@@ -20,6 +21,7 @@ export const AuthNavigationStack = () => {
             <AuthStack.Screen name="Login" component={ LoginScreen } />
             <AuthStack.Screen name="Register" component={ RegisterScreen } />
             <AuthStack.Screen name="Home" component={ MainNavigationDrawer } />
+            <AuthStack.Screen name="SuccessNav" component={ SuccessNavigationStack } />
         </AuthStack.Navigator>
     );
 }

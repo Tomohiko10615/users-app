@@ -5,10 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 
 export const SuccessScreen = ({ route }) => {
   
-  const { successMessage, redirect } = route.params;
- 
-
-  const navigation = useNavigation();
+  const { successMessage, redirect, navigation } = route.params;
 
   return (
     <View>

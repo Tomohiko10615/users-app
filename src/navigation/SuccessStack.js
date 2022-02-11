@@ -19,7 +19,7 @@ export const SuccessNavigationStack = () => {
                 }
             }}
         >
-            <SuccessStack.Screen name="Success" component={ SuccessScreen }
+            <SuccessStack.Screen name="Success" component={ SuccessScreen } 
             />
         </SuccessStack.Navigator>
     );

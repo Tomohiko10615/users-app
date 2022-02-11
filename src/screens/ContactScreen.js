@@ -10,7 +10,6 @@ export const ContactScreen = ({ route }) => {
     const [mensaje, setMensaje] = useState("");
     const navigation = useNavigation();
 
-
     const clienteId = 1;
 
     async function sendMessage() {
@@ -46,13 +45,14 @@ export const ContactScreen = ({ route }) => {
             const result = await response.json();
             console.log(result)
             if (result) {
-                let successMessage = "Hemos enviado tu solicitud. Espera la respuesta de blocker con las condiciones del servicio.";
+                let successMessage = "Hemos enviado tu solicitud. Espera la respuesta del blocker con las condiciones del servicio.";
 
-                navigation.navigate("SuccessNav", {
+                navigation.replace("SuccessNav", {
                     screen: "Success",
                     params: {
                         successMessage: successMessage,
                         redirect: "Home",
+                        navigation: navigation
                     }
                 });
             }

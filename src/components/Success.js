@@ -4,14 +4,13 @@ import React from "react";
 
 
 export default function Success(props) {
-  const { successMessage, redirect } = props;
-  const navigation = useNavigation();
+  const { successMessage, redirect, navigation } = props;
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{successMessage}</Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate(redirect)}
+        onPress={() => navigation.replace(redirect)}
       >
         <View style={styles.button}>
           <Text style={styles.buttonText}>Volver al inicio</Text>
@@ -23,17 +22,32 @@ export default function Success(props) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "blue",
+    backgroundColor: "white",
     height: "100%",
   },
 
   text: {
     textAlign: "center",
-    color: "white",
+    color: "blue",
     textAlignVertical: "center",
     height: "50%",
     fontSize: 25,
     width: "80%",
     alignSelf: "center",
   },
+  button: {
+    backgroundColor: "blue",
+    paddingVertical: 10,
+    marginTop: 10,
+    borderRadius: 15,
+    width: "80%",
+    alignSelf: "center"
+  },
+  buttonText: {
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "white",
+
+  }
+
 });

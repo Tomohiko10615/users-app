@@ -28,7 +28,6 @@ export const MainNavigationDrawer = () => {
             <MainDrawer.Screen name="Proccess" component={ ProccessNavigationStack } />
             <MainDrawer.Screen name="BlockerDetailsNav" component={ BlockerDetailsNavigationStack } />
             <MainDrawer.Screen name="ContactNav" component={ ContactNavigationStack } />
-            <MainDrawer.Screen name="SuccessNav" component={ SuccessNavigationStack } />
         </MainDrawer.Navigator>
     );
 }

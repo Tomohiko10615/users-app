@@ -102,10 +102,29 @@ export const RegisterContain = () => {
                 const result = await response.json();
                 setLoading(false);
                 console.log(result);
+
+
+
                 if (result.id != null) {
+                    const url = "https://pasteblock.herokuapp.com/api/token";
+                    const usuario = { tokenDispositivo: token };
+
+                    try {
+                        const response = await fetch(url, {
+                            method: "POST",
+                            body: JSON.stringify(usuario),
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                        });
+                        const resultToken = await response.json();
+                    } catch (error) {
+                        throw error;
+                    }
                     navigation.replace("Home");
                     return result;
                 }
+
             } catch (error) {
                 throw error;
             }
