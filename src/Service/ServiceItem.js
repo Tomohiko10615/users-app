@@ -6,6 +6,10 @@ import { getStars } from "../utils/Stars";
 
 export default function ServiceItem(props) {
   const { item, showServiceDetails } = props;
+
+console.log(item.confirmacionCliente)
+console.log("aa")
+
   let source = "";
   switch (item.servicio) {
     case "Albañilería":
@@ -67,7 +71,7 @@ export default function ServiceItem(props) {
               textColor="blue"
               style={styles.button}
             />
-            {!item.haFinalizado && (
+            {!item.haFinalizado && item.confirmacionCliente && (
               <Button
                 title="Modificar calificaciones"
                 onPress={() => {
@@ -81,17 +85,27 @@ export default function ServiceItem(props) {
           </>
         
         )}
-        {!item.confirmacionCliente && item.culminacionBlocker && !item.haFinalizado && (
-          
+        {item.confirmacionCliente == null && item.culminacionBlocker && !item.haFinalizado && (
+          <>
           <Button
-          title="Ver solicitud de confirmación"
+          title="Confirmar"
           onPress={() => {
-            showServiceDetails(item, "ver");
+            showServiceDetails(item, "confirmar");
           }}
-          backgroundColor="white"
-          textColor="blue"
+          backgroundColor="green"
+          textColor="white"
           style={styles.button}
         />
+        <Button
+          title="Reportar"
+          onPress={() => {
+            showServiceDetails(item, "reportar");
+          }}
+          backgroundColor="red"
+          textColor="white"
+          style={styles.button}
+        />
+        </>
         )}
       </View>
     </View>

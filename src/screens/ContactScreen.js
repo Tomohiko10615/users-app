@@ -10,7 +10,7 @@ export const ContactScreen = ({ route }) => {
     const [mensaje, setMensaje] = useState("");
     const navigation = useNavigation();
 
-    const clienteId = 1;
+    const clienteId = 2;
 
     async function sendMessage() {
         try {

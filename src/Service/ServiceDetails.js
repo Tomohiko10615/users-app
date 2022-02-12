@@ -51,14 +51,14 @@ export default function ServiceDetails(props) {
   let infoText = "";
   let successMessage = "";
   switch (serviceDetails) {
-    case "culminar":
+    case "confirmar":
       infoText =
-        "¡Haz dado por finalizado tus labores. Por favor deja una calificación al usuario!";
+        "¡Haz dado confirmado la culminación del trabajo. Por favor deja una calificación al blocker!";
       successMessage = "Calificación enviada con éxito";
       break;
     case "reportar":
       infoText =
-        "Antes de proceder, por favor comunícate con el usuario para resolver cualquier desacuerdo. Si aún deseas proceder, especifica los motivos del problema.";
+        "Antes de proceder, por favor comunícate con el blocker para resolver cualquier desacuerdo. Si aún deseas proceder, especifica los motivos del problema.";
       successMessage = "Calificación enviada con éxito";
       break;
     case "ver":
@@ -98,8 +98,8 @@ export default function ServiceDetails(props) {
   }, []);
 
   const options = [
-    "No pagó lo acordado",
-    "Canceló el trabajo",
+    "Cobró de más",
+    "No cumplió con los plazos",
     "Otros",
     "Ninguna",
   ];
