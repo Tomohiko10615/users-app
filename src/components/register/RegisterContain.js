@@ -5,34 +5,21 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Keyboard } from "r
 import Icon from "react-native-vector-icons/Ionicons";
 import { RegisterBottomContainer } from "../../containers/RegisterBottomContainer";
 
-import { useForm } from "../../hooks/useForm";
+
+import { useFormik } from "formik";
 import { useNavigation } from "@react-navigation/native";
 
 export const RegisterContain = () => {
 
     const navigation = useNavigation();
 
-    const hole = "";
-
-    const { firstname, lastname, email, district, phone, password, onChange } = useForm({
-        firstname: "",
-        lastname: "",
-        email: "",
-        district: "",
-        phone: "",
-        password: ""
-    });
-
-    const onRegister = () => {
-        Keyboard.dismiss();
-
-        if( firstname == "" || lastname == "" || email == "" || district == "" || phone == "" || password == "") {
-            console.log("Entradas de texto vacias");
-        } else {
-            console.log("Correcto");
-            navigation.replace("Home");
+    const formik = useFormik({
+        initialValues: initialValues(),
+        onSubmit: (form) => {
+            console.log("Enviando...");
+            console.log(form);
         }
-    }
+    });
 
     return(
         <View style={ styles.registerContain }>
@@ -44,57 +31,55 @@ export const RegisterContain = () => {
                     size={ 20 }
                 />
                 <Text style={ styles.registerTitle }>REGISTRO</Text>
-                <Text>{ hole }</Text>
+                <Text></Text>
             </View>
             <TextInput 
                 placeholder="Nombres"
                 style={ styles.input }
-                onChangeText={ (value) => onChange(value, "firstname") }
-                value={ firstname }
-                onSubmitEditing={ onRegister }
+                value={ formik.values.firstname }
+                onChangeText={(text) => formik.setFieldValue("firstname", text)}
             />
             <TextInput 
                 placeholder="Apellidos"
                 style={ styles.input }
-                onChangeText={ (value) => onChange(value, "lastname") }
-                value={ lastname }
-                onSubmitEditing={ onRegister }
+                value={ formik.values.lastname }
+                onChangeText={(text) => formik.setFieldValue("lastname", text)}
             />
             <TextInput 
                 placeholder="Correo electronico"
                 style={ styles.input }
-                onChangeText={ (value) => onChange(value, "email") }
-                value={ email }
-                onSubmitEditing={ onRegister }
+                value={ formik.values.email }
+                onChangeText={(text) => formik.setFieldValue("email", text)}
             />
             <TextInput 
                 placeholder="Contraseña"
                 style={ styles.input }
-                onChangeText={ (value) => onChange(value, "password") }
-                value={ password }
-                onSubmitEditing={ onRegister }
                 secureTextEntry={ true }
+                value={ formik.values.password }
+                onChangeText={(text) => formik.setFieldValue("password", text)}
             />
             <TextInput 
                 placeholder="Celular"
                 style={ styles.input }
-                onChangeText={ (value) => onChange(value, "phone") }
-                value={ phone }
-                onSubmitEditing={ onRegister }
-            />
-            <TextInput 
-                placeholder="Distrito"
-                style={ styles.input }
-                onChangeText={ (value) => onChange(value, "district") }
-                value={ district }
-                onSubmitEditing={ onRegister }
+                value={ formik.values.phone }
+                onChangeText={(text) => formik.setFieldValue("phone", text)}
             />
 
             <RegisterBottomContainer
-                action={ onRegister }
+                action={ formik.handleSubmit }
             />
         </View>
     );
+}
+
+function initialValues() {
+    return {
+        firstname: "",
+        lastname: "",
+        email: "",
+        password: "",
+        phone: ""
+    }
 }
 
 const styles = StyleSheet.create({

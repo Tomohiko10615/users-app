@@ -10,12 +10,13 @@ import { Menu } from "../components/home/Menu";
 import { NavigationTab } from "./NavigationTab";
 import { ProccessNavigationStack } from "./ProccessNavigationStack";
 
+
 const MainDrawer = createDrawerNavigator();
 
 export const MainNavigationDrawer = () => {
     return(
         <MainDrawer.Navigator
-            drawerContent={ (props) => <Menu {...props} /> }
+                drawerContent={ (props) => <Menu {...props} /> }
         >
             <MainDrawer.Screen name="Home" component={ NavigationTab } />
             <MainDrawer.Screen name="Profile" component={ ProfileScreen } />

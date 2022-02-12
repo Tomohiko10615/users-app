@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { View, StyleSheet, Text } from "react-native";
 import { HomeBottomContainer } from "../../containers/HomeBottomContainer";
 
+
 export const HomeContain = () => {
+
     return(
         <View style={ styles.bottomContainer }>
             <View style={ styles.welcomeContainer }>
