@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#ffffff",
         paddingVertical: 15,
         paddingHorizontal: 30,
-        borderRadius: 15
+        borderRadius: 15,
+        marginBottom: 15,
     },
     buttonText: {
         fontWeight: "bold",
