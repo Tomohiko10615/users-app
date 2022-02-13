@@ -2,15 +2,15 @@ import React from "react";
 
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { BlockerServiceScreen } from "../screens/BlockerServiceScreen";
+import { SuccessScreen } from "../screens/SuccessScreen";
 import { HeaderCustomStack } from "../components/HeaderCustomStack";
 
-const ProccessStack = createStackNavigator();
+const SuccessStack = createStackNavigator();
 
-export const ProccessNavigationStack = () => {
+export const SuccessNavigationStack = () => {
 
     return (
-        <ProccessStack.Navigator 
+        <SuccessStack.Navigator 
             screenOptions={{
                 headerLeft: () => {
                     return(
@@ -19,8 +19,8 @@ export const ProccessNavigationStack = () => {
                 }
             }}
         >
-            <ProccessStack.Screen name="Blockers" component={ BlockerServiceScreen }
+            <SuccessStack.Screen name="Success" component={ SuccessScreen } 
             />
-        </ProccessStack.Navigator>
+        </SuccessStack.Navigator>
     );
 }

@@ -9,11 +9,15 @@ import { PoliticyScreen } from "../screens/PoliticyScreen";
 import { Menu } from "../components/home/Menu";
 import { NavigationTab } from "./NavigationTab";
 import { ProccessNavigationStack } from "./ProccessNavigationStack";
+import { BlockerDetailsNavigationStack } from "./BlockerDetailsStack";
+import { ContactNavigationStack } from "./ContactStack";
+import { SuccessNavigationStack } from "./SuccessStack";
 
 
 const MainDrawer = createDrawerNavigator();
 
 export const MainNavigationDrawer = () => {
+
     return(
         <MainDrawer.Navigator
                 drawerContent={ (props) => <Menu {...props} /> }
@@ -23,6 +27,8 @@ export const MainNavigationDrawer = () => {
             <MainDrawer.Screen name="Terms" component={ TermsScreen } />
             <MainDrawer.Screen name="Politicy" component={ PoliticyScreen } />
             <MainDrawer.Screen name="Proccess" component={ ProccessNavigationStack } />
+            <MainDrawer.Screen name="BlockerDetailsNav" component={ BlockerDetailsNavigationStack } />
+            <MainDrawer.Screen name="ContactNav" component={ ContactNavigationStack } />
         </MainDrawer.Navigator>
     );
 }

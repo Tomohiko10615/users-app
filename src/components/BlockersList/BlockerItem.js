@@ -6,16 +6,17 @@ import { ButtonSelected } from "./ButtomSelected";
 import { BLOCKER_LIST } from "../../data/BlockerInfo";
 
 
-const Blocker = ({ nombres, apellidos, avatar, distrito, reputacion }) => (
+
+
+const Blocker = ({ nombres, apellidos, avatar, reputacion, profileData, serviceId }) => (
     <View style={ styles.blockerContainer }>
         <Image
             style={ styles.userAvatar } 
-            source={ avatar }
+            source={{ uri: avatar }}
         />
         <View style={ styles.infoContainer }>
             <Text style={ styles.fullName }>{ nombres } { apellidos }</Text>
             <View style={[ styles.subContainer, styles.separatorContainer ]}>
-                <Text style={{ fontSize: 13, fontWeight: "bold", color: "#f2f2f2" }}>{ distrito }</Text>
                 <View style={ styles.subContainer }>
                     <Text style={{ color: "#ffffff" }}>{ reputacion }</Text>
                     <Icon 
@@ -25,22 +26,25 @@ const Blocker = ({ nombres, apellidos, avatar, distrito, reputacion }) => (
                     />
                 </View>
             </View>
-            <ButtonSelected />
+            <ButtonSelected profileData={profileData} avatar={avatar} serviceId={serviceId}/>
         </View>
     </View>
 );
 
-export const BlockerItem = () => {
+export const BlockerItem = ({blockersList, serviceId}) => {
 
+    const hostUrl = "https://pasteblock.herokuapp.com/uploads/";
 
     const renderBlocker = ({ item }) => {
+        const imgUrl = hostUrl + item.foto;
         return(
             <Blocker 
-                nombres={ item.nombres }
-                apellidos={ item.apellidos }
-                avatar={ item.avatar }
-                distrito={ item.distrito }
+                nombres={ item.usuario.nombre }
+                apellidos={ item.usuario.apellido }
+                avatar={ imgUrl }
                 reputacion={ item.reputacion }
+                profileData = { item }
+                serviceId={serviceId}
             />
         );
     }
@@ -48,7 +52,7 @@ export const BlockerItem = () => {
 
     return(
         <FlatList 
-            data={ BLOCKER_LIST }
+            data={ blockersList }
             renderItem={ renderBlocker }
             keyExtractor={ item => item.id }
         />

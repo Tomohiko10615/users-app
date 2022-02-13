@@ -14,18 +14,22 @@ export const HomeBottomContainer = () => {
             <CardService 
                 source={ iconAlbañil }
                 service="Albañileria"
+                serviceId="1"
             />
             <CardService 
                 source={ iconGasfitero }
                 service="Gasfiteria"
+                serviceId="2"
             />
             <CardService 
                 source={ iconElectrico }
                 service="Electricidad"
+                serviceId="3"
             />
             <CardService 
                 source={ iconPintor }
                 service="Pintura"
+                serviceId="4"
             />
         </View>
     );
