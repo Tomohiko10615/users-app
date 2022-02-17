@@ -56,9 +56,10 @@ const styles = StyleSheet.create({
   mainContainer: {
     justifyContent: "flex-start",
     flex: 1,
+    paddingTop: 30
   },
   secondaryContainer: {
-    backgroundColor: "blue",
+    backgroundColor: "#004aad",
     borderRadius: 30,
     marginVertical: 30,
     width: "60%",

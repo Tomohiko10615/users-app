@@ -19,7 +19,17 @@ export const BlockerDetailsNavigationStack = () => {
                 }
             }}
         >
-            <BlockerDetailsStack.Screen name="BlockerDetails" component={ BlockerDetailsScreen }
+            <BlockerDetailsStack.Screen 
+                name="BlockerDetails" 
+                component={ BlockerDetailsScreen }
+                options={{
+                    headerStyle: {
+                        backgroundColor: "#004aad"
+                    },
+                    headerTitleStyle: {
+                        color: "#ffffff"
+                    }
+                }}
             />
         </BlockerDetailsStack.Navigator>
     );

@@ -6,7 +6,6 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { RegisterBottomContainer } from "../../containers/RegisterBottomContainer";
 
 
-import { useFormik } from "formik";
 import { useNavigation } from "@react-navigation/native";
 
 import { useFormik } from "formik";
@@ -246,7 +245,6 @@ function validationSchema() {
         nombre: Yup.string().required("Ingrese su nombre"),
         apellido: Yup.string().required("Ingrese sus apellidos"),
         email: Yup.string()
-            .email("El email no es válido")
             .required("Ingrese un email"),
         celular: Yup.string()
             .required("Ingrese un número móvil")

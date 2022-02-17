@@ -318,13 +318,13 @@ export default function ServiceDetails(props) {
 
 const styles = StyleSheet.create({
   messageConditionContainer: {
-    backgroundColor: "blue",
+    backgroundColor: "#004aad",
     borderRadius: 30,
     marginVertical: 15,
     width: "80%",
     alignSelf: "center",
     justifyContent: "center",
-    paddingVertical: 10,
+    padding: 10,
   },
   infoText: {
     color: "white",
@@ -335,7 +335,7 @@ const styles = StyleSheet.create({
   messageDataText: {
     color: "white",
     textAlignVertical: "center",
-    marginVertical: 5,
+    marginVertical: 10,
     marginHorizontal: 15,
   },
   rowContainer: {
@@ -363,11 +363,11 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginBottom: 10,
     marginHorizontal: 15,
-    height: 80,
+    height: 80
   },
   secondaryText: {
     textAlign: "left",
-    color: "blue",
+    color: "#747474",
     marginVertical: 15,
     marginHorizontal: 15,
   },

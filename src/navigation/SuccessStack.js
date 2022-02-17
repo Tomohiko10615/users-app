@@ -12,6 +12,7 @@ export const SuccessNavigationStack = () => {
     return (
         <SuccessStack.Navigator 
             screenOptions={{
+                headerShown: false,
                 headerLeft: () => {
                     return(
                         <HeaderCustomStack />

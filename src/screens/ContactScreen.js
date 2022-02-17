@@ -3,7 +3,6 @@ import React, { useState, useEffect, useLayoutEffect } from "react";
 import { getStars } from '../utils/Stars';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from '@react-navigation/native';
-import { StackActions, NavigationActions } from 'react-navigation';
 
 export const ContactScreen = ({ route }) => {
     const { profileData, avatar, serviceId } = route.params;
@@ -118,13 +117,13 @@ const styles = StyleSheet.create({
         marginBottom: 15 / 2,
     },
     secondaryContainer: {
-        backgroundColor: "white",
+        backgroundColor: "#ffffff",
         borderRadius: 30,
         marginBottom: 15,
         marginHorizontal: 15,
     },
     flatListContainer: {
-        backgroundColor: "white",
+        backgroundColor: "#ffffff",
         borderRadius: 30,
         marginBottom: 15,
         marginHorizontal: 15,
@@ -135,14 +134,14 @@ const styles = StyleSheet.create({
         width: "50%",
     },
     flatListItem: {
-        color: "blue",
+        color: "#004aad",
         fontSize: 11,
         marginHorizontal: 15,
         marginVertical: 2,
     },
     text: {
         textAlign: "left",
-        color: "white",
+        color: "#ffffff",
         marginBottom: 10,
         marginHorizontal: 15,
     },
@@ -179,10 +178,10 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 20,
         borderRadius: 20,
-        backgroundColor: "white",
+        backgroundColor: "#ffffff",
         width: "80%",
         alignSelf: "center",
-        color: "black",
-        textAlignVertical: "top",
+        color: "#747474",
+        textAlignVertical: "top"
     },
 });

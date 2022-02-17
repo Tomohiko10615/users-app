@@ -3,10 +3,6 @@ import { View, Text, FlatList, StyleSheet, Image } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
 import { ButtonSelected } from "./ButtomSelected";
-import { BLOCKER_LIST } from "../../data/BlockerInfo";
-
-
-
 
 const Blocker = ({ nombres, apellidos, avatar, reputacion, profileData, serviceId }) => (
     <View style={ styles.blockerContainer }>
@@ -77,7 +73,8 @@ const styles = StyleSheet.create({
     },
     userAvatar: {
         width: 100,
-        height: 100
+        height: 100,
+        borderRadius: 100
     },
     infoContainer: {
         width: 200,

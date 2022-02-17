@@ -16,9 +16,9 @@ export const HeaderCustomStack = () => {
                 <Icon 
                     name="arrow-back-sharp"
                     size={ 24 }
-                    color="#000000"
+                    color="#ffffff"
                     style={{
-                        backgroundColor: "#ffffff",
+                        backgroundColor: "#004aad",
                         borderRadius: 100,
                         padding: 8,
                         marginLeft: 10

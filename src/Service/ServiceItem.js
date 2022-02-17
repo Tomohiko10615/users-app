@@ -114,7 +114,7 @@ console.log("aa")
 
 const styles = StyleSheet.create({
   messageContainer: {
-    backgroundColor: "blue",
+    backgroundColor: "#004aad",
     borderRadius: 30,
     marginVertical: 15,
     width: "80%",

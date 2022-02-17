@@ -19,7 +19,17 @@ export const ProccessNavigationStack = () => {
                 }
             }}
         >
-            <ProccessStack.Screen name="Blockers" component={ BlockerServiceScreen }
+            <ProccessStack.Screen 
+                name="Blockers" 
+                component={ BlockerServiceScreen }
+                options={{
+                    headerStyle: {
+                        backgroundColor: "#004aad"
+                    },
+                    headerTitleStyle: {
+                        color: "#ffffff"
+                    }
+                }}
             />
         </ProccessStack.Navigator>
     );
