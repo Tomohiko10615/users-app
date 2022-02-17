@@ -2,13 +2,14 @@ import React, { useState, useEffect, useLayoutEffect } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BlockerItem } from "../components/BlockersList/BlockerItem";
-
+import useAuth from "../hooks/useAuth";
 
 
 export const BlockerServiceScreen = ({route}) => {
     const { service, serviceId } = route.params;
     const [blockersList, setBlockersList] = useState([]);
-    const distritoId = 5;
+    
+    const { distritoId } = useAuth();
 
     async function getBlockers() {
         try {

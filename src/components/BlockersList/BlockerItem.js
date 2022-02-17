@@ -29,7 +29,7 @@ const Blocker = ({ nombres, apellidos, avatar, reputacion, profileData, serviceI
 
 export const BlockerItem = ({blockersList, serviceId}) => {
 
-    const hostUrl = "https://pasteblock.herokuapp.com/uploads/";
+    const hostUrl = "https://pasteblockbucket.s3.amazonaws.com/uploads/";
 
     const renderBlocker = ({ item }) => {
         const imgUrl = hostUrl + item.foto;

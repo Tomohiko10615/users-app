@@ -17,7 +17,7 @@ export const Menu = ({ navigation }) => {
     const handlerSession = () => {
         Logout();
         navigation.replace("Login");
-        console.log(nombre, distrito);
+        
     }
 
     return(
