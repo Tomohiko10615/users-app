@@ -158,10 +158,14 @@ export default function ServiceDetails(props) {
         const result = await response;
         setPosting(false);
         if (result) {
-          navigation.navigate("Success", {
-            successMessage: successMessage,
-            redirect: "Home",
-          });
+          navigation.replace("SuccessNav", {
+            screen: "Success",
+            params: {
+                successMessage: successMessage,
+                redirect: "Home",
+                navigation: navigation
+            }
+        });
         }
         return result;
       } catch (error) {
