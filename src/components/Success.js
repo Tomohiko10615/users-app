@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 
@@ -8,12 +8,15 @@ export default function Success(props) {
 
   return (
     <View style={styles.container}>
+      <StatusBar 
+        translucent backgroundColor={ "#004aad" }
+      />
       <Text style={styles.text}>{successMessage}</Text>
       <TouchableOpacity
         onPress={() => navigation.replace(redirect)}
       >
         <View style={styles.button}>
-          <Text style={styles.buttonText}>Volver al inicio</Text>
+          <Text style={styles.buttonText}>VOLVER AL INICIO</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -22,22 +25,24 @@ export default function Success(props) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    backgroundColor: "#004aad",
     height: "100%",
+    width: "100%"
   },
 
   text: {
-    textAlign: "center",
-    color: "blue",
+    textAlign: "justify",
+    color: "#ffffff",
     textAlignVertical: "center",
-    height: "50%",
+    height: "70%",
     fontSize: 25,
-    width: "80%",
+    width: "100%",
     alignSelf: "center",
+    paddingHorizontal: 35
   },
   button: {
-    backgroundColor: "blue",
-    paddingVertical: 10,
+    backgroundColor: "#ffffff",
+    paddingVertical: 15,
     marginTop: 10,
     borderRadius: 15,
     width: "80%",
@@ -46,7 +51,8 @@ const styles = StyleSheet.create({
   buttonText: {
     fontWeight: "bold",
     textAlign: "center",
-    color: "white",
+    color: "#333333",
+    fontSize: 16
 
   }
 

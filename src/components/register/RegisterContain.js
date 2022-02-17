@@ -5,7 +5,7 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Keyboard, Activity
 import Icon from "react-native-vector-icons/Ionicons";
 import { RegisterBottomContainer } from "../../containers/RegisterBottomContainer";
 
-import { useForm } from "../../hooks/useForm";
+
 import { useNavigation } from "@react-navigation/native";
 
 import { useFormik } from "formik";
@@ -26,15 +26,6 @@ export const RegisterContain = () => {
     const [value, setValue] = useState(null);
     const [items, setItems] = useState([]);
 
-    /*const { firstname, lastname, email, district, phone, password, confirmPassword, onChange } = useForm({
-        firstname: "",
-        lastname: "",
-        email: "",
-        district: "",
-        phone: "",
-        password: "",
-        confirmPassword: "",
-    });*/
 
     async function getDistritos() {
         try {
@@ -106,21 +97,21 @@ export const RegisterContain = () => {
 
 
                 if (result.id != null) {
-                    const url = "https://pasteblock.herokuapp.com/api/token";
-                    const usuario = { tokenDispositivo: token };
+                    // const url = "https://pasteblock.herokuapp.com/api/token";
+                    // const usuario = { tokenDispositivo: token };
 
-                    try {
-                        const response = await fetch(url, {
-                            method: "POST",
-                            body: JSON.stringify(usuario),
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                        });
-                        const resultToken = await response.json();
-                    } catch (error) {
-                        throw error;
-                    }
+                    // try {
+                    //     const response = await fetch(url, {
+                    //         method: "POST",
+                    //         body: JSON.stringify(usuario),
+                    //         headers: {
+                    //             "Content-Type": "application/json",
+                    //         },
+                    //     });
+                    //     const resultToken = await response.json();
+                    // } catch (error) {
+                    //     throw error;
+                    // }
                     navigation.replace("Home");
                     return result;
                 }
@@ -131,29 +122,6 @@ export const RegisterContain = () => {
         },
     });
 
-    // Validación anterior
-    /*
-    const onRegister = () => {
-        Keyboard.dismiss();
-
-        if( firstname == "" || lastname == "" || email == "" || district == "" || phone == "" || password == "") {
-            alert("Entradas de texto vacias");
-        }
-        else if (password != confirmPassword) {
-            alert("Las contraseñas no coinciden");
-        } else {
-            alert("Correcto");
-            navigation.replace("Home");
-        }
-    }*/
-
-    /* <TextInput 
-                 placeholder="Distrito"
-                 style={ styles.input }
-                 onChangeText={ (value) => formik.setFieldValue("distrito", value) }
-                 value={ formik.values.distrito }
-                 //onSubmitEditing={ onRegister }
-             />*/
 
     return (
         <View style={styles.registerContain}>
@@ -277,8 +245,8 @@ function validationSchema() {
         nombre: Yup.string().required("Ingrese su nombre"),
         apellido: Yup.string().required("Ingrese sus apellidos"),
         email: Yup.string()
-            .email("El email no es válido")
-            .required("Ingrese un email"),
+            .required("Ingrese un email")
+            .email("El email es incorrecto"),
         celular: Yup.string()
             .required("Ingrese un número móvil")
             .min(9, "Ingrese un número móvil válido")

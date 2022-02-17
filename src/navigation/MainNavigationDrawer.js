@@ -13,16 +13,17 @@ import { BlockerDetailsNavigationStack } from "./BlockerDetailsStack";
 import { ContactNavigationStack } from "./ContactStack";
 import { SuccessNavigationStack } from "./SuccessStack";
 
+
 const MainDrawer = createDrawerNavigator();
 
 export const MainNavigationDrawer = () => {
 
     return(
         <MainDrawer.Navigator
-            drawerContent={ (props) => <Menu {...props} /> }
+                drawerContent={ (props) => <Menu {...props} /> }
         >
             <MainDrawer.Screen name="Home" component={ NavigationTab } />
-            <MainDrawer.Screen name="Profile" component={ ProfileScreen } />
+            {/* <MainDrawer.Screen name="Profile" component={ ProfileScreen } /> */}
             <MainDrawer.Screen name="Terms" component={ TermsScreen } />
             <MainDrawer.Screen name="Politicy" component={ PoliticyScreen } />
             <MainDrawer.Screen name="Proccess" component={ ProccessNavigationStack } />

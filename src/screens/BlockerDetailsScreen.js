@@ -27,6 +27,7 @@ export const BlockerDetailsScreen = ({ route }) => {
                         <Text style={styles.secondaryText}>{profileData.presentacion}</Text>
                     </View>
                     <TouchableOpacity
+                        activeOpacity={ 0.7 }
                         onPress={() => {
                             navigation.navigate("ContactNav", {
                                 screen: 'Contact',
@@ -51,6 +52,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         overflow: "hidden",
         marginBottom: 40,
+        padding: 10
     },
     container: {
         alignSelf: "flex-start",
@@ -60,9 +62,10 @@ const styles = StyleSheet.create({
     },
     secondaryContainer: {
         backgroundColor: "white",
-        borderRadius: 30,
+        borderRadius: 20,
         marginBottom: 15,
         marginHorizontal: 15,
+        marginVertical: 15
     },
     flatListContainer: {
         backgroundColor: "white",
@@ -89,7 +92,7 @@ const styles = StyleSheet.create({
     },
     secondaryText: {
         textAlign: "left",
-        color: "#004aad",
+        color: "#747474",
         marginVertical: 15,
         marginHorizontal: 15,
         height: 80,
@@ -97,21 +100,21 @@ const styles = StyleSheet.create({
     image: {
         width: 100,
         height: 100,
-        borderRadius: 30,
+        borderRadius: 100,
         overflow: "hidden",
         margin: 15,
     },
     button: {
-        backgroundColor: "#ffffff",
-        paddingVertical: 10,
-        marginBottom: 15,
+        backgroundColor: "#E6E9EA",
+        paddingVertical: 12,
+        marginVertical: 15,
         borderRadius: 15,
-        width: "60%",
+        width: "90%",
         alignSelf: "center"
     },
     buttonText: {
         fontWeight: "bold",
         textAlign: "center",
-        color: "#004aad",
+        color: "#666666",
     }
 });

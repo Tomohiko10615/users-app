@@ -19,7 +19,17 @@ export const ContactNavigationStack = () => {
                 }
             }}
         >
-            <ContactStack.Screen name="Contact" component={ ContactScreen }
+            <ContactStack.Screen 
+                name="Contact" 
+                component={ ContactScreen }
+                options={{
+                    headerStyle: {
+                        backgroundColor: "#004aad"
+                    },
+                    headerTitleStyle: {
+                        color: "#ffffff"
+                    }
+                }}
             />
         </ContactStack.Navigator>
     );

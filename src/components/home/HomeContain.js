@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { View, StyleSheet, Text } from "react-native";
 import { HomeBottomContainer } from "../../containers/HomeBottomContainer";
+import useAuth from "../../hooks/useAuth";
 
 export const HomeContain = () => {
+    const {nombre} = useAuth();
+
     return(
         <View style={ styles.bottomContainer }>
             <View style={ styles.welcomeContainer }>
                 <View style={ styles.welcome }>
                     <Text style={ styles.welcomeText }>Bienvenido, </Text>
-                    <Text style={ styles.username }>USUARIO</Text>
+                    <Text style={ styles.username }>{nombre}</Text>
                 </View>
                 <View style={ styles.description }>
                     <Text style={ styles.descriptionText }>En </Text>

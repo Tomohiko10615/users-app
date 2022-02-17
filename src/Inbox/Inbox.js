@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, SafeAreaView } from "react-native";
 import MessageList from "./MessageList";
 import MessageCondition from "./MessageCondition";
 
@@ -14,7 +14,7 @@ export default function Inbox(props) {
   } = props;
 
   return (
-    <View style={styles.mainContainer}>
+    <SafeAreaView style={styles.mainContainer}>
       <View style={styles.secondaryContainer}>
         <Text style={styles.secondaryText}>
           {messageCondition ? <>Condiciones</> : <>Solicitudes</>}
@@ -30,16 +30,17 @@ export default function Inbox(props) {
           showMessageCondition={showMessageCondition}
         />
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
   mainContainer: {
     justifyContent: "flex-start",
     flex: 1,
+    paddingTop: 30
   },
   secondaryContainer: {
-    backgroundColor: "blue",
+    backgroundColor: "#004aad",
     borderRadius: 30,
     marginBottom: 15,
     marginVertical: 30,

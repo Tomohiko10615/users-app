@@ -1,10 +1,11 @@
 import React from "react";
 
 import { View, Text, Image, StyleSheet } from "react-native";
-
+import useAuth from "../../hooks/useAuth"
 
 
 export const UserAvatar = () => {
+    const { nombre } = useAuth();
 
     const data = {
         user: {
@@ -28,7 +29,7 @@ export const UserAvatar = () => {
                 style={ styles.userImageAvatar }
                 source={ sources.avatar }
             />
-            <Text style={ styles.userName }>{ firstname } { lastname }</Text>
+            <Text style={ styles.userName }>{ nombre }</Text>
         </View>
     );
 }

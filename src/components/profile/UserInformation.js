@@ -5,12 +5,21 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { EditButton } from "./EditButton";
 import { UserInput } from "./UserInput";
 
+import useAuth from "../../hooks/useAuth";
+
+/**
+ * 
+ * @component DropPicker: Error en toda la Screen al cambiarlo por <Dropdown /> (Componente hijo)
+ */
+
 export const UserInformation = () => {
+    const {distrito} = useAuth();
+
     return(
         <View style={ styles.informationContainer }>
             <UserInput 
                 label="Distrito"
-                information="Villa el Salvador"
+                information={ distrito }
                 type="drop"
             />
             <UserInput 
