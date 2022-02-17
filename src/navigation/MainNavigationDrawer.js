@@ -23,7 +23,7 @@ export const MainNavigationDrawer = () => {
                 drawerContent={ (props) => <Menu {...props} /> }
         >
             <MainDrawer.Screen name="Home" component={ NavigationTab } />
-            <MainDrawer.Screen name="Profile" component={ ProfileScreen } />
+            {/* <MainDrawer.Screen name="Profile" component={ ProfileScreen } /> */}
             <MainDrawer.Screen name="Terms" component={ TermsScreen } />
             <MainDrawer.Screen name="Politicy" component={ PoliticyScreen } />
             <MainDrawer.Screen name="Proccess" component={ ProccessNavigationStack } />

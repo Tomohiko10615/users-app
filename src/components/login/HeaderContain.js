@@ -28,8 +28,7 @@ export const HeaderContain = () => {
 
             try {
                 const response = await fetch(
-                    "https://pasteblock.herokuapp.com/api/login",
-                    {
+                    "https://pasteblock.herokuapp.com/api/login", {
                         method: "POST",
                         body: JSON.stringify(formik.values),
                     }
@@ -37,32 +36,34 @@ export const HeaderContain = () => {
 
                 const result = await response.json();
                 setLogging(false);
+                console.log(result);
 
                 if (result.success) {
-                    Login(result.success, result.email, result.name, result.context);
+                    Login(result.success, result.email, result.nombre, result.context, result.distrito, result.distritoId); //Login(s)
 
-                    if (token != result.token) {
-                        const url = "https://pasteblock.herokuapp.com/api/token";
-                        const user = { 
-                            tokenDispositivo: token
-                        };
+                    // if (token != result.token) {
+                    //     const url = "https://pasteblock.herokuapp.com/api/token";
+                    //     const user = { 
+                    //         tokenDispositivo: token
+                    //     };
 
-                        try {
-                            const response = await fetch(url, {
-                                method: "POST",
-                                body: JSON.stringify(user),
-                                headers: {
-                                    "Content-Type": "application/json",
-                                },
-                            });
+                    //     try {
+                    //         const response = await fetch(url, {
+                    //             method: "POST",
+                    //             body: JSON.stringify(user),
+                    //             headers: {
+                    //                 "Content-Type": "application/json",
+                    //             },
+                    //         });
 
-                            const resultToken = await response.json();
-                            return resultToken;
+                    //         const resultToken = await response.json();
+                    //         return resultToken;
 
-                        } catch (error) {
-                            throw error;
-                        }
-                    }
+                    //     } catch (error) {
+                    //         throw error;
+                    //     }
+                    // }
+                    navigation.replace("Home");
                 } else {
                     setError("Email o contraseña incorrectos");
                 }
@@ -124,7 +125,7 @@ export const HeaderContain = () => {
                 <Text>{error}</Text>
                 {
                     logging ? <ActivityIndicator size="large" color="#e6f2ff" /> : <></>
-                }
+                } 
                 <LoginBottomContainer />
             </View>
         </View>
@@ -133,7 +134,7 @@ export const HeaderContain = () => {
 
 const validationSchema = () => {
     return {
-        email: Yup.string().required("El email es requerido"),
+        email: Yup.string().required("El email es requerido").email("El email es incorrecto"),
         password: Yup.string().required("Ingresa una contraseña").min(8, "La contraseña debe tener como minimo 8 caracteres")
     }
 }

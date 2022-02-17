@@ -5,14 +5,14 @@ import { HomeBottomContainer } from "../../containers/HomeBottomContainer";
 import useAuth from "../../hooks/useAuth";
 
 export const HomeContain = () => {
-    const {name, token} = useAuth();
+    const {nombre} = useAuth();
 
     return(
         <View style={ styles.bottomContainer }>
             <View style={ styles.welcomeContainer }>
                 <View style={ styles.welcome }>
                     <Text style={ styles.welcomeText }>Bienvenido, </Text>
-                    <Text style={ styles.username }>{name}</Text>
+                    <Text style={ styles.username }>{nombre}</Text>
                 </View>
                 <View style={ styles.description }>
                     <Text style={ styles.descriptionText }>En </Text>

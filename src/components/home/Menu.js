@@ -6,12 +6,19 @@ import { DrawerContentScrollView } from "@react-navigation/drawer";
 import Icon from "react-native-vector-icons/Ionicons";
 
 import { USER_INFO } from "../../data/UserInfo";
+import useAuth from "../../hooks/useAuth";
 
 const avatarUser = require("../../images/user.png");
 
 export const Menu = ({ navigation }) => {
 
-    const { firstname, distrito } = USER_INFO;
+    const { nombre, distrito, Logout } = useAuth();
+
+    const handlerSession = () => {
+        Logout();
+        navigation.replace("Login");
+        console.log(nombre, distrito);
+    }
 
     return(
         <DrawerContentScrollView>
@@ -27,7 +34,7 @@ export const Menu = ({ navigation }) => {
                             source={ avatarUser }
                         />
                         <Text style={{ color: "#ddd" }}>Hola, </Text>
-                        <Text style={{ color:"#ffffff", fontWeight: "bold" }}>{ firstname }</Text>
+                        <Text style={{ color:"#ffffff", fontWeight: "bold" }}>{ nombre }</Text>
                     </View>
                     <View style={{ flexDirection: "row", alignItems: "center", marginTop: 10 }}>
                         <Icon 
@@ -47,14 +54,14 @@ export const Menu = ({ navigation }) => {
                         >
                             <Text style={ styles.buttonText }>Inicio</Text>
                         </TouchableHighlight>
-                        <TouchableHighlight
+                        {/* <TouchableHighlight
                             underlayColor="#ECF6FF" 
                             style={ styles.buttonContainer }
                             onPress={ () => navigation.navigate("Profile") }    
                         >
                             <Text style={ styles.buttonText }>Mi Perfil</Text>
-                        </TouchableHighlight>
-                        <TouchableHighlight
+                        </TouchableHighlight> */}
+                        {/* <TouchableHighlight
                             underlayColor="#ECF6FF"  
                             style={ styles.buttonContainer }
                             onPress={ () => navigation.navigate("Terms") }
@@ -66,11 +73,12 @@ export const Menu = ({ navigation }) => {
                             onPress={ () => navigation.navigate("Politicy") }
                         >
                             <Text style={ styles.buttonText }>Politicas de privacidad</Text>
-                        </TouchableHighlight>
+                        </TouchableHighlight> */}
                     </View>
                     <View>
+                        { /**Cerrar sesion*/ }
                         <TouchableHighlight
-                            onPress={ () => navigation.navigate("Login") } 
+                            onPress={ handlerSession } 
                             style={[ styles.buttonContainer, styles.buttonLogout ]}
                         >
                             <Text style={ styles.buttonText }>Cerrar sesion</Text>

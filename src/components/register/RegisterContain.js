@@ -97,21 +97,21 @@ export const RegisterContain = () => {
 
 
                 if (result.id != null) {
-                    const url = "https://pasteblock.herokuapp.com/api/token";
-                    const usuario = { tokenDispositivo: token };
+                    // const url = "https://pasteblock.herokuapp.com/api/token";
+                    // const usuario = { tokenDispositivo: token };
 
-                    try {
-                        const response = await fetch(url, {
-                            method: "POST",
-                            body: JSON.stringify(usuario),
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                        });
-                        const resultToken = await response.json();
-                    } catch (error) {
-                        throw error;
-                    }
+                    // try {
+                    //     const response = await fetch(url, {
+                    //         method: "POST",
+                    //         body: JSON.stringify(usuario),
+                    //         headers: {
+                    //             "Content-Type": "application/json",
+                    //         },
+                    //     });
+                    //     const resultToken = await response.json();
+                    // } catch (error) {
+                    //     throw error;
+                    // }
                     navigation.replace("Home");
                     return result;
                 }
@@ -245,7 +245,8 @@ function validationSchema() {
         nombre: Yup.string().required("Ingrese su nombre"),
         apellido: Yup.string().required("Ingrese sus apellidos"),
         email: Yup.string()
-            .required("Ingrese un email"),
+            .required("Ingrese un email")
+            .email("El email es incorrecto"),
         celular: Yup.string()
             .required("Ingrese un número móvil")
             .min(9, "Ingrese un número móvil válido")
