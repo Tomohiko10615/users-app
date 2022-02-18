@@ -25,7 +25,11 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "pasteblockuser.apk",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+      "useNextNotificationsApi": true,
+      "permissions": [
+        "RECEIVE_BOOT_COMPLETED"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
