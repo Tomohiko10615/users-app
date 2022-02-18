@@ -8,6 +8,28 @@ import { RegisterScreen } from "../screens/RegisterScreen";
 import { MainNavigationDrawer } from "../navigation/MainNavigationDrawer"
 import { SuccessNavigationStack } from "./SuccessStack";
 
+import * as Linking from "expo-linking";
+
+const prefix = Linking.createURL("/");
+export const linking = {
+  prefixes: [prefix],
+  config: {
+    screens: {
+      Home: {
+        screens: {
+            Home: {
+                screens: {
+                    Notificaciones: "message",
+                    Contratos: "service",
+                }
+                
+            }
+        },
+      },
+    },
+  },
+};
+
 const AuthStack = createStackNavigator();
 
 export const AuthNavigationStack = () => {

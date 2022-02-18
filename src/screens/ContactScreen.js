@@ -3,13 +3,14 @@ import React, { useState, useEffect, useLayoutEffect } from "react";
 import { getStars } from '../utils/Stars';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from '@react-navigation/native';
+import useAuth from '../hooks/useAuth';
 
 export const ContactScreen = ({ route }) => {
     const { profileData, avatar, serviceId } = route.params;
     const [mensaje, setMensaje] = useState("");
     const navigation = useNavigation();
 
-    const clienteId = 2;
+    const { clienteId, distritoId } = useAuth();
 
     async function sendMessage() {
         try {
@@ -25,7 +26,7 @@ export const ContactScreen = ({ route }) => {
                     id: Number(serviceId)
                 },
                 distrito: {
-                    id: 5
+                    id: distritoId
                 }
             };
 

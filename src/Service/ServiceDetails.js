@@ -20,7 +20,7 @@ export default function ServiceDetails(props) {
   const { serviceItem, serviceDetails } = props;
   const [posting, setPosting] = useState(false);
   const [estadoCliente, setEstadoCliente] = useState();
-  const [actualizar, setActualizar] = useState();
+  const [actualizar, setActualizar] = useState(false);
   const [confirmarCancelacion, setConfirmarCancelacion] = useState();
 
   const [state, setState] = useState({ selectedOption: "Ninguna" });
@@ -75,7 +75,7 @@ export default function ServiceDetails(props) {
 
   useLayoutEffect(() => {
     setActualizar(false);
-    if (serviceDetails == "culminar") {
+    if (serviceDetails == "confirmar") {
       setEstadoCliente(true);
     } else if (serviceDetails == "reportar") {
       setEstadoCliente(false);

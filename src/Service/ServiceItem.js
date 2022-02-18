@@ -68,7 +68,7 @@ export default function ServiceItem(props) {
               textColor="blue"
               style={styles.button}
             />
-            {!item.haFinalizado && item.confirmacionCliente && (
+            {!item.haFinalizado && (item.confirmacionCliente != undefined) && (
               <Button
                 title="Modificar calificaciones"
                 onPress={() => {
