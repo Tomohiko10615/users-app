@@ -24,7 +24,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "pasteblock.apk",
+      "package": "pasteblockuser.apk",
       "googleServicesFile": "./google-services.json"
     },
     "web": {
