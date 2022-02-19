@@ -12,12 +12,15 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import DropDownPicker from 'react-native-dropdown-picker';
+import useAuth from "../../hooks/useAuth";
 
 export const RegisterContain = () => {
 
     const navigation = useNavigation();
 
     const hole = "";
+
+    const { token } = useAuth();
 
     const [loading, setLoading] = useState(false);
     const [distritos, setDistritos] = useState({});
@@ -97,21 +100,21 @@ export const RegisterContain = () => {
 
 
                 if (result.id != null) {
-                    // const url = "https://pasteblock.herokuapp.com/api/token";
-                    // const usuario = { tokenDispositivo: token };
+                    const url = "https://pasteblock.herokuapp.com/api/token";
+                    const usuario = { tokenDispositivo: token };
 
-                    // try {
-                    //     const response = await fetch(url, {
-                    //         method: "POST",
-                    //         body: JSON.stringify(usuario),
-                    //         headers: {
-                    //             "Content-Type": "application/json",
-                    //         },
-                    //     });
-                    //     const resultToken = await response.json();
-                    // } catch (error) {
-                    //     throw error;
-                    // }
+                    try {
+                        const response = await fetch(url, {
+                            method: "POST",
+                            body: JSON.stringify(usuario),
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                        });
+                        const resultToken = await response.json();
+                    } catch (error) {
+                        throw error;
+                    }
                     navigation.replace("Home");
                     return result;
                 }

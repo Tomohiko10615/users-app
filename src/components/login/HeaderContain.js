@@ -8,10 +8,11 @@ import * as Yup from "yup";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import useAuth from "../../hooks/useAuth";
-
+import { useWindowDimensions } from "react-native";
 
 export const HeaderContain = () => {
     const navigation = useNavigation();
+    const {height, width} = useWindowDimensions();
 
     const [ error, setError ] = useState("");
     const [ logging, setLogging ] = useState(false);
@@ -39,30 +40,30 @@ export const HeaderContain = () => {
                 console.log(result);
 
                 if (result.success) {
-                    Login(result.success, result.email, result.nombre, result.context, result.distrito, result.distritoId); //Login(s)
+                    Login(result.success, result.email, result.nombre, result.context, result.clienteId, result.distrito, result.distritoId); //Login(s)
 
-                    // if (token != result.token) {
-                    //     const url = "https://pasteblock.herokuapp.com/api/token";
-                    //     const user = { 
-                    //         tokenDispositivo: token
-                    //     };
+                    if (token != result.token) {
+                         const url = "https://pasteblock.herokuapp.com/api/token";
+                         const user = { 
+                             tokenDispositivo: token
+                         };
 
-                    //     try {
-                    //         const response = await fetch(url, {
-                    //             method: "POST",
-                    //             body: JSON.stringify(user),
-                    //             headers: {
-                    //                 "Content-Type": "application/json",
-                    //             },
-                    //         });
+                         try {
+                             const response = await fetch(url, {
+                                 method: "POST",
+                                 body: JSON.stringify(user),
+                                 headers: {
+                                     "Content-Type": "application/json",
+                                 },
+                             });
 
-                    //         const resultToken = await response.json();
-                    //         return resultToken;
+                             const resultToken = await response.json();
+                             return resultToken;
 
-                    //     } catch (error) {
-                    //         throw error;
-                    //     }
-                    // }
+                         } catch (error) {
+                             throw error;
+                         }
+                    }
                     navigation.replace("Home");
                 } else {
                     setError("Email o contraseña incorrectos");
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
     },
     bottomContainer: {
         width: "100%",
-        height: 200,
+        height: 100,
         alignItems: "center",
         flexDirection: "column",
         justifyContent: "space-between"

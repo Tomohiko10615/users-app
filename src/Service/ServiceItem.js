@@ -7,21 +7,18 @@ import { getStars } from "../utils/Stars";
 export default function ServiceItem(props) {
   const { item, showServiceDetails } = props;
 
-console.log(item.confirmacionCliente)
-console.log("aa")
-
   let source = "";
   switch (item.servicio) {
     case "Albañilería":
       source = require("../../assets/serv1.png");
       break;
-    case "Pintura":
+    case "Gasfitería":
       source = require("../../assets/serv2.png");
       break;
     case "Electricidad":
       source = require("../../assets/serv3.png");
       break;
-    case "Gasfitería":
+    case "Pintura":
       source = require("../../assets/serv4.png");
       break;
     default:
@@ -71,7 +68,7 @@ console.log("aa")
               textColor="blue"
               style={styles.button}
             />
-            {!item.haFinalizado && item.confirmacionCliente && (
+            {!item.haFinalizado && (item.confirmacionCliente != undefined) && (
               <Button
                 title="Modificar calificaciones"
                 onPress={() => {
