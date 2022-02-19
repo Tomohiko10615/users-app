@@ -63,6 +63,7 @@ export const HeaderContain = () => {
                              throw error;
                          }
                     }
+                    
                     navigation.replace("Home");
                 } else {
                     setError("Email o contraseña incorrectos");
@@ -173,7 +174,6 @@ const styles = StyleSheet.create({
     },
     bottomContainer: {
         width: "100%",
-        height: 300,
         alignItems: "center",
         flexDirection: "column",
         justifyContent: "space-between"
