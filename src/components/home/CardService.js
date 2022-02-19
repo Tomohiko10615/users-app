@@ -11,10 +11,11 @@ export const CardService = ({ source, service, serviceId }) => {
 
     return(
         <TouchableOpacity
-             onPress={ () => navigation.navigate("Proccess", {
+            activeOpacity={0.5}
+            onPress={ () => navigation.navigate("Proccess", {
                 screen: 'Blockers',
                 params: { service: service, serviceId: serviceId }
-              }) }
+            })}
         >
             <View style={ styles.card }>
                 <Image 
@@ -36,7 +37,16 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         borderWidth: 1,
-        borderColor: "#ddd"
+        borderColor: "#ddd",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.23,
+        shadowRadius: 2.62,
+
+        elevation: 4,
     },
     cardText: {
         color: "#004aad",

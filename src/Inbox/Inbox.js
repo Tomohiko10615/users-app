@@ -17,7 +17,7 @@ export default function Inbox(props) {
     <SafeAreaView style={styles.mainContainer}>
       <View style={styles.secondaryContainer}>
         <Text style={styles.secondaryText}>
-          {messageCondition ? <>Condiciones</> : <>Solicitudes</>}
+          {messageCondition ? <>CONDICIONES</> : <>SOLICITUDES</>}
         </Text>
       </View>
       {messageCondition ? (

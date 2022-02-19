@@ -20,12 +20,12 @@ export default function Service(props) {
     <View style={styles.mainContainer}>
       <View style={styles.secondaryContainer}>
         <Text style={styles.secondaryText}>
-          {serviceDetails ? <>Servicio</> : <>Servicios</>}
+          {serviceDetails ? <>SERVICIO</> : <>SERVICIOS</>}
         </Text>
       </View>
       {!serviceDetails && (
         <View style={styles.checkboxContainer}>
-          <Text style={{ color: "blue" }}>Ver finalizados</Text>
+          <Text style={{ color: "#333333", fontWeight: "bold" }}>Ver finalizados</Text>
           <Checkbox
             style={styles.checkbox}
             value={finalizado}
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     justifyContent: "flex-start",
     flex: 1,
-    paddingTop: 30
+    paddingTop: 30,
   },
   secondaryContainer: {
     backgroundColor: "#004aad",

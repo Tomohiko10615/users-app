@@ -30,7 +30,7 @@ export default function MessageList(props) {
         <>
           {!endOfData && (
             <View style={styles.loadingContainer}>
-              <ActivityIndicator size="large" color="blue" />
+              <ActivityIndicator size="large" color="#004aad" />
             </View>
           )}
           {endOfData && messages.length != 0 && (
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   text: {
-    color: "blue",
+    color: "#747474",
     textAlign: "center",
   },
 });

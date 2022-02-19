@@ -8,6 +8,7 @@ import {
 import { useIsFocused } from "@react-navigation/native";
 
 import Service from "../Service/Service";
+import { Header } from "../components/home/Header";
 
 export const ContractsScreen = () => {
     const isFocused = useIsFocused();
@@ -85,6 +86,7 @@ export const ContractsScreen = () => {
   return (
     <SafeAreaView style={styles.scrollContainer}>
       <View style={{ flexGrow: 1, justifyContent: "center" }}>
+        <Header />
         {loaded ? (
           <Service
             serviceData={serviceData}
@@ -107,7 +109,7 @@ export const ContractsScreen = () => {
 }
 
 const styles = StyleSheet.create({
-  scrollContainer: { flex: 1 },
+  scrollContainer: { flex: 1, marginTop: 31 },
   loadingContainer: {
     flex: 1,
     justifyContent: "center",

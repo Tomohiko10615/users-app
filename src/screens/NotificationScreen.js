@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import Inbox from "../Inbox/Inbox";
 import { useNavigation, useIsFocused } from "@react-navigation/native";
+import { Header } from "../components/home/Header";
 
 export const NotificationScreen = () => {
     const [messageData, setMessageData] = useState([]);
@@ -66,6 +67,7 @@ export const NotificationScreen = () => {
   return (
     <SafeAreaView style={styles.scrollContainer}>
       <View style={{ flexGrow: 1, justifyContent: "center" }}>
+        <Header />
         {loaded ? (
           <Inbox
             messageData={messageData}
@@ -86,7 +88,7 @@ export const NotificationScreen = () => {
 }
 
 const styles = StyleSheet.create({
-  scrollContainer: { flex: 1 },
+  scrollContainer: { flex: 1, marginTop: 31 },
   loadingContainer: {
     flex: 1,
     justifyContent: "center",

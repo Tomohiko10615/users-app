@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { View, Text, StyleSheet, TouchableOpacity, Image, TouchableHighlight } from "react-native";
 import { DrawerContentScrollView } from "@react-navigation/drawer";
 
 import Icon from "react-native-vector-icons/Ionicons";
 
-import { USER_INFO } from "../../data/UserInfo";
 import useAuth from "../../hooks/useAuth";
 
 const avatarUser = require("../../images/user.png");
@@ -17,11 +16,15 @@ export const Menu = ({ navigation }) => {
     const handlerSession = () => {
         Logout();
         navigation.replace("Login");
-        console.log(nombre, distrito);
+    }
+
+    const goToScreen = (locationScreen) => {
+        navigation.jumpTo(locationScreen);
+        navigation.closeDrawer();
     }
 
     return(
-        <DrawerContentScrollView>
+
             <View style={ styles.containerMenu }>
                 <View style={ styles.drawerTopItem }>
                     <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -50,7 +53,7 @@ export const Menu = ({ navigation }) => {
                         <TouchableHighlight
                             underlayColor="#ECF6FF"
                             style={ styles.buttonContainer }
-                            onPress={ () => navigation.navigate("Home") }
+                            onPress={ () => goToScreen("Inicio") }
                         >
                             <Text style={ styles.buttonText }>Inicio</Text>
                         </TouchableHighlight>
@@ -75,24 +78,26 @@ export const Menu = ({ navigation }) => {
                             <Text style={ styles.buttonText }>Politicas de privacidad</Text>
                         </TouchableHighlight> */}
                     </View>
-                    <View>
                         { /**Cerrar sesion*/ }
+                    <View>
                         <TouchableHighlight
                             onPress={ handlerSession } 
                             style={[ styles.buttonContainer, styles.buttonLogout ]}
+                            underlayColor="#e57a6d"
                         >
-                            <Text style={ styles.buttonText }>Cerrar sesion</Text>
+                            <Text style={{ color: "#333333", fontWeight: "bold" }}>Cerrar sesion</Text>
                         </TouchableHighlight>
                     </View>
                 </View>
             </View>
-        </DrawerContentScrollView>
+
     );
 }
 
 const styles = StyleSheet.create({
     containerMenu: {
-        flex: 1
+        flex: 1,
+        paddingTop: 30
     },
     drawerTopItem: {
         height: 130,
@@ -110,13 +115,14 @@ const styles = StyleSheet.create({
     buttonContainer: {
         backgroundColor: "#f3f6f9",
         padding: 12,
-        marginBottom: 20
+        marginBottom: 20,
+        borderRadius: 15
     },
     buttonText: {
         color: "#747474",
         fontWeight: "700"
     },
     buttonLogout: {
-        backgroundColor: "#FBC3C3"
+        backgroundColor: "#FBC3C3",
     }
 });
