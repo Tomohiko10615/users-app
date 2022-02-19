@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         borderBottomWidth: 1,
         color: "#ffffff",
-        borderBottomColor: "#ffffff"
+        borderBottomColor: "#ffffff",
+        marginBottom: 15
     },
     navText: {
         color: "#ffffff"

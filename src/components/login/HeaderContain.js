@@ -64,6 +64,7 @@ export const HeaderContain = () => {
                              throw error;
                          }
                     }
+                    
                     navigation.replace("Home");
                 } else {
                     setError("Email o contraseña incorrectos");

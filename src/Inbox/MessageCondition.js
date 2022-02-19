@@ -25,13 +25,13 @@ export default function MessageCondition(props) {
     case "Albañilería":
       source = require("../../assets/serv1.png");
       break;
-    case "Pintura":
+    case "Gasfitería":
       source = require("../../assets/serv2.png");
       break;
     case "Electricidad":
       source = require("../../assets/serv3.png");
       break;
-    case "Gasfitería":
+    case "Pintura":
       source = require("../../assets/serv4.png");
       break;
     default:
@@ -43,49 +43,49 @@ export default function MessageCondition(props) {
     if (accepted != null) {
       (async () => {
         await sendMessage();
-        })();
+      })();
     }
-}, [accepted]);
+  }, [accepted]);
 
-  async function sendMessage () {
-      setPosting(true);
-      try {
-        const newMensaje = {id: messageItem.id, estadoConfirmacionCliente: accepted}
-       
-        const response = await fetch(
-          "https://pasteblock.herokuapp.com/api/enviar",
-          {
-            method: "POST",
-            body: JSON.stringify(newMensaje),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        const result = await response.json();
-        setPosting(false);
- 
-        if (result) {
-          let successMessage = "";
-          if (accepted) {
-            successMessage =
-              "Haz aceptado el trabajo con las condiciones del blocker.";
-          } else {
-            successMessage = "Haz rechazado el trabajo.";
-          }
-          navigation.replace("SuccessNav", {
-            screen: "Success",
-            params: {
-                successMessage: successMessage,
-                redirect: "Home",
-                navigation: navigation
-            }
-        });
+  async function sendMessage() {
+    setPosting(true);
+    try {
+      const newMensaje = { id: messageItem.id, estadoConfirmacionCliente: accepted }
+
+      const response = await fetch(
+        "https://pasteblock.herokuapp.com/api/enviar",
+        {
+          method: "POST",
+          body: JSON.stringify(newMensaje),
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-        return result;
-      } catch (error) {
-        throw error;
+      );
+      const result = await response.json();
+      setPosting(false);
+
+      if (result) {
+        let successMessage = "";
+        if (accepted) {
+          successMessage =
+            "Haz aceptado el trabajo con las condiciones del blocker.";
+        } else {
+          successMessage = "Haz rechazado el trabajo.";
+        }
+        navigation.replace("SuccessNav", {
+          screen: "Success",
+          params: {
+            successMessage: successMessage,
+            redirect: "Home",
+            navigation: navigation
+          }
+        });
       }
+      return result;
+    } catch (error) {
+      throw error;
+    }
   };
 
   return (
@@ -112,7 +112,7 @@ export default function MessageCondition(props) {
         <View style={styles.secondaryContainer}>
           <Text style={styles.secondaryText}>{messageItem.costo}</Text>
         </View>
-        
+
 
         <View>
           {posting && (
@@ -127,7 +127,7 @@ export default function MessageCondition(props) {
           title="Aceptar"
           onPress={() => {
             setAccepted(true);
-            
+
           }}
           backgroundColor="green"
           textColor="white"
@@ -137,7 +137,7 @@ export default function MessageCondition(props) {
           title="Rechazar"
           onPress={() => {
             setAccepted(false);
-            
+
           }}
           backgroundColor="red"
           textColor="white"

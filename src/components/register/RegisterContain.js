@@ -115,7 +115,15 @@ export const RegisterContain = () => {
                     } catch (error) {
                         throw error;
                     }
-                    navigation.replace("Home");
+                    const successMessage = "Te haz registrado con éxito. Puedes iniciar sesión ahora."
+                    navigation.replace("SuccessNav", {
+                        screen: "Success",
+                        params: {
+                            successMessage: successMessage,
+                            redirect: "Login",
+                            navigation: navigation
+                        }
+                    });
                     return result;
                 }
 
@@ -236,7 +244,7 @@ export const RegisterContain = () => {
                 action={formik.handleSubmit}
             />
             {
-                loading && 
+                loading &&
                 <View style={styles.activity} pointerEvents="none">
                     <ActivityIndicator size="large" color="#e6f2ff" />
                 </View>
@@ -264,7 +272,7 @@ function validationSchema() {
                 8,
                 "La contraseña es muy corta, debe tener 8 caracteres como mínimo"
             ),
-        distritoId: Yup.string().nullable("Seleccione un distrito").required("Seleccione un distrito"),
+        distritoId: Yup.string().nullable().required("Seleccione un distrito"),
         confirmPassword: Yup.string().oneOf(
             [Yup.ref("password"), null],
             "Las contraseñas deben coincidir"
