@@ -232,13 +232,15 @@ export const RegisterContain = () => {
                 <Text style={styles.error}>{formik.errors.distritoId}</Text>
             )}
 
-            <View style={styles.spinner}>
-                {loading && <ActivityIndicator size="large" color="white" />}
-            </View>
-
             <RegisterBottomContainer
                 action={formik.handleSubmit}
             />
+            {
+                loading && 
+                <View style={styles.activity} pointerEvents="none">
+                    <ActivityIndicator size="large" color="#e6f2ff" />
+                </View>
+            }
         </View>
     );
 }
@@ -304,8 +306,18 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         borderColor: "#ffffff"
     },
-    spinner: {
-        marginBottom: 15,
+    activity: {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        justifyContent: "center",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        height: "100%",
+        width: "100%",
+        zIndex: 3,
+        elevation: 3
     },
     error: {
         textAlign: "center",

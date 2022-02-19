@@ -1,6 +1,6 @@
 import React from "react";
 
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, Text } from "react-native";
 
 import Icon from "react-native-vector-icons/Ionicons"
 
@@ -12,13 +12,16 @@ export const Header = () => {
 
     return(
         <View style={ styles.headerContainer }>
-            <Icon 
-                size={ 36 }
-                name="md-menu"
-                color="#ffffff"
-                style={ styles.headerItem }
-                onPress={ () => navigation.openDrawer() }
-            />
+            <View style={ styles.headerLeft }>
+                <Icon 
+                    size={ 36 }
+                    name="md-menu"
+                    color="#ffffff"
+                    style={ styles.headerItem }
+                    onPress={ () => navigation.openDrawer() }
+                />
+                <Text style={ styles.headerTitle }>Pasteblock</Text>
+            </View>
             <Image
                 style={ styles.headerIcon } 
                 source={ require("../../images/pb-icon-200x200.png") }
@@ -43,5 +46,14 @@ const styles = StyleSheet.create({
     },
     headerItem: {
         padding: 15
+    },
+    headerLeft: {
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    headerTitle: {
+        color: "#ffffff",
+        fontWeight: "bold",
+        fontSize: 20
     }
 });

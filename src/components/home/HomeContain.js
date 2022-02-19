@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         fontSize: 24
     },
     username: {
-        color: "#004aad",
+        color: "#007fff",
         fontWeight: "bold",
         fontSize: 24
     },

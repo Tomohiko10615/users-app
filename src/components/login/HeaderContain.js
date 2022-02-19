@@ -8,10 +8,11 @@ import * as Yup from "yup";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import useAuth from "../../hooks/useAuth";
-
+import { useWindowDimensions } from "react-native";
 
 export const HeaderContain = () => {
     const navigation = useNavigation();
+    const {height, width} = useWindowDimensions();
 
     const [ error, setError ] = useState("");
     const [ logging, setLogging ] = useState(false);
@@ -85,6 +86,7 @@ export const HeaderContain = () => {
     }
 
     return(
+        <>
         <View style={ styles.LoginContainer }>
             <Text style={ styles.loginTitle }>INICIAR SESION</Text>
             <TextInput 
@@ -124,12 +126,16 @@ export const HeaderContain = () => {
                     </View>
                 </TouchableOpacity>
                 <Text>{error}</Text>
-                {
-                    logging ? <ActivityIndicator size="large" color="#e6f2ff" /> : <></>
-                } 
                 <LoginBottomContainer />
-            </View>
+            </View> 
         </View>
+        {
+            logging && 
+            <View style={styles.activity} pointerEvents="none">
+                <ActivityIndicator size="large" color="#e6f2ff" />
+            </View>
+        }
+        </>
     );
 }
 
@@ -143,7 +149,7 @@ const validationSchema = () => {
 const styles = StyleSheet.create({
     LoginContainer: {
         width: "100%",
-        height: "85%",
+        height: "100%",
         backgroundColor: "#004aad",
         alignItems: "center",
         paddingVertical: 40
@@ -174,6 +180,7 @@ const styles = StyleSheet.create({
     },
     bottomContainer: {
         width: "100%",
+        height: 100,
         alignItems: "center",
         flexDirection: "column",
         justifyContent: "space-between"
@@ -181,5 +188,18 @@ const styles = StyleSheet.create({
     customInputContainer: {
         flexDirection: "row",
         alignItems: "center"
+    },
+    activity: {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        justifyContent: "center",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        height: "100%",
+        width: "100%",
+        zIndex: 3,
+        elevation: 3
     }
 });
