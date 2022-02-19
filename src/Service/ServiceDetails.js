@@ -20,7 +20,7 @@ export default function ServiceDetails(props) {
   const { serviceItem, serviceDetails } = props;
   const [posting, setPosting] = useState(false);
   const [estadoCliente, setEstadoCliente] = useState();
-  const [actualizar, setActualizar] = useState();
+  const [actualizar, setActualizar] = useState(false);
   const [confirmarCancelacion, setConfirmarCancelacion] = useState();
 
   const [state, setState] = useState({ selectedOption: "Ninguna" });
@@ -35,13 +35,13 @@ export default function ServiceDetails(props) {
     case "Albañilería":
       source = require("../../assets/serv1.png");
       break;
-    case "Pintura":
+    case "Gasfitería":
       source = require("../../assets/serv2.png");
       break;
     case "Electricidad":
       source = require("../../assets/serv3.png");
       break;
-    case "Gasfitería":
+    case "Pintura":
       source = require("../../assets/serv4.png");
       break;
     default:
@@ -75,7 +75,7 @@ export default function ServiceDetails(props) {
 
   useLayoutEffect(() => {
     setActualizar(false);
-    if (serviceDetails == "culminar") {
+    if (serviceDetails == "confirmar") {
       setEstadoCliente(true);
     } else if (serviceDetails == "reportar") {
       setEstadoCliente(false);
@@ -158,9 +158,13 @@ export default function ServiceDetails(props) {
         const result = await response;
         setPosting(false);
         if (result) {
-          navigation.navigate("Success", {
-            successMessage: successMessage,
-            redirect: "Home",
+          navigation.replace("SuccessNav", {
+            screen: "Success",
+            params: {
+              successMessage: successMessage,
+              redirect: "Home",
+              navigation: navigation
+            }
           });
         }
         return result;
