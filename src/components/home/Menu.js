@@ -57,14 +57,14 @@ export const Menu = ({ navigation }) => {
                         >
                             <Text style={ styles.buttonText }>Inicio</Text>
                         </TouchableHighlight>
-                        {/* <TouchableHighlight
+                        <TouchableHighlight
                             underlayColor="#ECF6FF" 
                             style={ styles.buttonContainer }
                             onPress={ () => navigation.navigate("Profile") }    
                         >
                             <Text style={ styles.buttonText }>Mi Perfil</Text>
-                        </TouchableHighlight> */}
-                        {/* <TouchableHighlight
+                        </TouchableHighlight>
+                        {/*<TouchableHighlight
                             underlayColor="#ECF6FF"  
                             style={ styles.buttonContainer }
                             onPress={ () => navigation.navigate("Terms") }
@@ -76,7 +76,7 @@ export const Menu = ({ navigation }) => {
                             onPress={ () => navigation.navigate("Politicy") }
                         >
                             <Text style={ styles.buttonText }>Politicas de privacidad</Text>
-                        </TouchableHighlight> */}
+                        </TouchableHighlight>*/}
                     </View>
                         { /**Cerrar sesion*/ }
                     <View>
@@ -107,7 +107,6 @@ const styles = StyleSheet.create({
         flexDirection: "column"
     },
     drawerBottomItem: {
-        height: 650,
         backgroundColor: "#ffffff",
         padding: 20,
         justifyContent: "space-between"

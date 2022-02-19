@@ -2,10 +2,11 @@ import React from "react";
 
 import { View, Text, Image, StyleSheet } from "react-native";
 import useAuth from "../../hooks/useAuth"
+import { getStars } from "../../utils/Stars";
 
-
-export const UserAvatar = () => {
+export const UserAvatar = (props) => {
     const { nombre } = useAuth();
+    const {reputacion} = props;
 
     const data = {
         user: {
@@ -18,10 +19,8 @@ export const UserAvatar = () => {
     }
 
     const { user } = data;
-    console.log(user);
 
     const { firstname, lastname, sources } = user;
-    console.log(firstname, lastname, sources.avatar);
 
     return(
         <View style={ styles.userContainer }>
@@ -30,17 +29,24 @@ export const UserAvatar = () => {
                 source={ sources.avatar }
             />
             <Text style={ styles.userName }>{ nombre }</Text>
+            
+        <View style={styles.container}>{getStars(reputacion)}
+        <View style={styles.badge}><Text style={styles.text}>  {reputacion}</Text></View>
+
         </View>
+    
+   
+        </View>
+        
     );
 }
 
 const styles = StyleSheet.create({
     userContainer: {
         width: "100%",
-        height: 200,
-        backgroundColor: "#ffffff",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        marginVertical: 15
     },
     userImageAvatar: {
         width: 70,
@@ -51,5 +57,14 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginTop: 20,
         color: "#333333"
-    }
+    },
+    container: {
+        alignSelf: "center",
+        alignItems: "center",
+        flexDirection: "row",
+        marginBottom: 15 / 2,
+      },
+      badge: {
+        
+      }
 });
