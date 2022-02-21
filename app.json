@@ -4,7 +4,7 @@
     "slug": "Pasteblock",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/users-pb-icon.png",
+    "icon": "./assets/Icon-pb.png",
     "splash": {
       "image": "./assets/splash-screen.png",
       "resizeMode": "contain",
