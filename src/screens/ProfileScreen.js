@@ -18,6 +18,7 @@ export const ProfileScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#999"
+        backgroundColor: "#999",
+        width: "100%"
     }
 });

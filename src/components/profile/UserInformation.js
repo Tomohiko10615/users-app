@@ -9,6 +9,7 @@ import Button from "../../utils/Button";
 import DropDownPicker from "react-native-dropdown-picker";
 
 import { useNavigation } from "@react-navigation/native";
+import { useWindowDimensions } from "react-native";
 /**
  * 
  * @component DropPicker: Error en toda la Screen al cambiarlo por <Dropdown /> (Componente hijo)
@@ -18,6 +19,8 @@ export const UserInformation = (props) => {
     const { cliente, distritos } = props;
 
     const navigation = useNavigation();
+    const {height, width} = useWindowDimensions();
+    const {Login, distrito } = useAuth();
 
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(undefined);
@@ -75,6 +78,7 @@ export const UserInformation = (props) => {
                 const result = await response.json();
 
                 if (result) {
+
                     navigation.replace("SuccessNav", {
                         screen: "Success",
                         params: {
@@ -84,6 +88,7 @@ export const UserInformation = (props) => {
                         }
                     });
                 }
+                console.log(result);
                 return result;
             } catch (error) {
                 throw error;
@@ -101,7 +106,7 @@ export const UserInformation = (props) => {
     }
 
     return (
-        <KeyboardAvoidingView behavior={(Platform.OS === 'ios') ? "padding" : null} keyboardVerticalOffset={Platform.select({ ios: 0, android: 500 })} style={styles.informationContainer}>
+        <View style={[styles.informationContainer, {marginHorizontal: 30}]}>
             {cliente !== {} ? (<>
                 <Text style={styles.text}>Distrito:</Text>
                 <DropDownPicker
@@ -118,6 +123,11 @@ export const UserInformation = (props) => {
                     language="ES"
                     onChangeValue={(value) => {
                         formik.setFieldValue("distritoId", value)
+                    }}
+                    dropDownContainerStyle={{
+                        backgroundColor: "#dfdfdf",
+                        width: "85%",
+                        marginHorizontal: 25,
                     }}
                 />
                 <Text style={styles.text}>Dirección:</Text>
@@ -147,41 +157,55 @@ export const UserInformation = (props) => {
                 <Button
                     title="Actualizar perfil"
                     onPress={formik.handleSubmit}
-                    backgroundColor="white"
-                    textColor="blue"
+                    backgroundColor="#004aad"
+                    textColor="#ffffff"
                 /></>) : (<></>)}
-        </KeyboardAvoidingView>
+        </View>
 
     );
 }
 
 const styles = StyleSheet.create({
     informationContainer: {
-        width: "100%",
-        height: "100%",
-        backgroundColor: "#004aad",
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
+        width: "85%",
+        height: "60%",
+        backgroundColor: "#ffffff",
+        borderBottomLeftRadius: 15,
+        borderBottomRightRadius: 15,
         alignItems: "center",
-        paddingVertical: 40
+        justifyContent: "center",
+        paddingVertical: 50,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+
+        elevation: 5
     },
     text: {
-        textAlign: "left",
-        color: "white",
+        alignItems: "flex-start",
+        color: "#747474",
         marginBottom: 10,
         marginHorizontal: 15,
         fontSize: 15,
+        width: "85%",
+        fontWeight: "bold"
     },
     input: {
+        borderWidth: 0,
         marginBottom: 20,
         height: 40,
         padding: 5,
         paddingHorizontal: 10,
-        borderRadius: 20,
-        backgroundColor: "white",
-        width: "90%",
+        backgroundColor: "#ffffff",
+        borderBottomWidth: 1,
+        borderBottomColor: "#999999",
+        width: "85%",
         alignSelf: "center",
-        color: "blue",
+        color: "#747474",
         textAlignVertical: "center",
     },
     error: {

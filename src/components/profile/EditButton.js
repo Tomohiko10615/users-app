@@ -19,7 +19,7 @@ export const EditButton = () => {
 const styles = StyleSheet.create({
     buttonContainer: {
         backgroundColor: "#ffffff",
-        marginVertical: 60,
+        marginVertical: 50,
         paddingHorizontal: 30,
         paddingVertical: 15,
         borderRadius: 20,

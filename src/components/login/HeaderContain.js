@@ -37,7 +37,6 @@ export const HeaderContain = () => {
 
                 const result = await response.json();
                 setLogging(false);
-                console.log(result);
 
                 if (result.success) {
                     Login(result.success, result.email, result.nombre, result.context, result.clienteId, result.distrito, result.distritoId); //Login(s)
