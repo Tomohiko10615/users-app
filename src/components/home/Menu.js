@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-
-import { View, Text, StyleSheet, TouchableOpacity, Image, TouchableHighlight } from "react-native";
-import { DrawerContentScrollView } from "@react-navigation/drawer";
-
+import { View, Text, StyleSheet, TouchableOpacity, Image, TouchableHighlight, SafeAreaView, useWindowDimensions } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-
 import useAuth from "../../hooks/useAuth";
+import { useRoute } from "@react-navigation/native";
+
 
 const avatarUser = require("../../images/user.png");
 
 export const Menu = ({ navigation }) => {
-
+    const { height } = useWindowDimensions();
     const { nombre, distrito, Logout } = useAuth();
+    const route = useRoute();
 
     const handlerSession = () => {
         Logout();
@@ -19,14 +18,17 @@ export const Menu = ({ navigation }) => {
     }
 
     const goToScreen = (locationScreen) => {
-        navigation.jumpTo(locationScreen);
-        navigation.closeDrawer();
+        if (route.name != "Home") {
+            navigation.jumpTo(locationScreen);
+        } else {
+            navigation.navigate("Home");
+        }
     }
 
     return(
 
-            <View style={ styles.containerMenu }>
-                <View style={ styles.drawerTopItem }>
+            <SafeAreaView style={ styles.containerMenu }>
+                <View style={[ styles.drawerTopItem, { height: height / 5 }]}>
                     <View style={{ flexDirection: "row", alignItems: "center" }}>
                         <Image
                             style={{
@@ -89,7 +91,7 @@ export const Menu = ({ navigation }) => {
                         </TouchableHighlight>
                     </View>
                 </View>
-            </View>
+            </SafeAreaView>
 
     );
 }
@@ -97,10 +99,9 @@ export const Menu = ({ navigation }) => {
 const styles = StyleSheet.create({
     containerMenu: {
         flex: 1,
-        paddingTop: 30
+        paddingTop: 20
     },
     drawerTopItem: {
-        height: 130,
         backgroundColor: "#004aad",
         justifyContent: "center",
         paddingHorizontal: 20,

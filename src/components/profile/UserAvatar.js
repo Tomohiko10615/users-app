@@ -10,8 +10,6 @@ export const UserAvatar = (props) => {
 
     const data = {
         user: {
-            firstname: "Luis Antonio",
-            lastname: "Huanca Moreno",
             sources: {
                 avatar: require("../../images/user.png")
             }
@@ -20,7 +18,7 @@ export const UserAvatar = (props) => {
 
     const { user } = data;
 
-    const { firstname, lastname, sources } = user;
+    const { sources } = user;
 
     return(
         <View style={ styles.userContainer }>
@@ -30,33 +28,35 @@ export const UserAvatar = (props) => {
             />
             <Text style={ styles.userName }>{ nombre }</Text>
             
-        <View style={styles.container}>{getStars(reputacion)}
-        <View style={styles.badge}><Text style={styles.text}>  {reputacion}</Text></View>
-
+            <View style={styles.container}>{getStars(reputacion)}
+                <View style={styles.badge}><Text style={styles.text}>  {reputacion}</Text></View>
+            </View>
         </View>
-    
-   
-        </View>
-        
     );
 }
 
 const styles = StyleSheet.create({
     userContainer: {
-        width: "100%",
+        width: "85%",
         alignItems: "center",
         justifyContent: "center",
-        marginVertical: 15
+        backgroundColor: "#1565c0",
+        marginHorizontal: 30,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+        paddingVertical: 20,
+        marginTop: "10%"
     },
     userImageAvatar: {
         width: 70,
-        height: 70
+        height: 70,
+        borderWidth: 4, borderColor: "#ffffff", borderRadius: 100
     },
     userName: {
         fontWeight: "500",
         fontSize: 18,
         marginTop: 20,
-        color: "#333333"
+        color: "#ffffff"
     },
     container: {
         alignSelf: "center",
@@ -64,7 +64,4 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         marginBottom: 15 / 2,
       },
-      badge: {
-        
-      }
 });
