@@ -6,7 +6,7 @@ export const AuthContext = createContext({
     isLogOut: undefined,
     nombre: undefined,
     userData: undefined,
-    context: undefined,
+    JWTtoken: undefined,
     token: undefined,
     clienteId: undefined,
     distrito: undefined,
@@ -20,7 +20,7 @@ export function AuthProvider(props) {
     const [auth, setAuth] = useState(undefined);
     const [userData, setUserData] = useState(undefined);
     const [nombre, setNombre] = useState(undefined);
-    const [context, setContext] = useState(undefined);
+    const [JWTtoken, setJWTtoken] = useState(undefined);
     const [isLogOut, setisLogOut] = useState(undefined);
     const [token, setToken] = useState(undefined);
     const [clienteId, setClienteId] = useState(undefined);
@@ -32,11 +32,11 @@ export function AuthProvider(props) {
         setToken(expoPushToken);
       }, [expoPushToken]);
 
-    const Login = (auth, userData, nombre, context, clienteId, distrito, distritoId) => {
+    const Login = (auth, userData, nombre, JWTtoken, clienteId, distrito, distritoId) => {
         setAuth(auth);
         setUserData(userData);
         setNombre(nombre);
-        setContext(context);
+        setJWTtoken(JWTtoken);
         setClienteId(clienteId);
         setDistrito(distrito);
         setDistritoId(distritoId);
@@ -46,7 +46,7 @@ export function AuthProvider(props) {
         setAuth(undefined);
         setUserData(undefined);
         setNombre(undefined);
-        setContext(undefined);
+        setJWTtoken(undefined);
         setDistrito(undefined);
         setDistritoId(undefined);
         // setisLogOut(isLogOut: params);
@@ -56,7 +56,7 @@ export function AuthProvider(props) {
         auth,
         userData,
         nombre,
-        context,
+        JWTtoken,
         isLogOut,
         token,
         clienteId,

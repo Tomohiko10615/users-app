@@ -16,7 +16,11 @@ export const HeaderContain = () => {
 
     const [ error, setError ] = useState("");
     const [ logging, setLogging ] = useState(false);
-    const { Login, token } = useAuth();
+    const { Login, token, JWTtoken } = useAuth();
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", "Bearer " + JWTtoken);
 
     const formik = useFormik({
         initialValues: { email: "", password: "" },
@@ -32,6 +36,7 @@ export const HeaderContain = () => {
                     "https://pasteblock.herokuapp.com/api/login", {
                         method: "POST",
                         body: JSON.stringify(formik.values),
+                        headers: myHeaders
                     }
                 );
 
@@ -39,7 +44,7 @@ export const HeaderContain = () => {
                 setLogging(false);
 
                 if (result.success) {
-                    Login(result.success, result.email, result.nombre, result.context, result.clienteId, result.distrito, result.distritoId); //Login(s)
+                    Login(result.success, result.email, result.nombre, result.JWTtoken, result.clienteId, result.distrito, result.distritoId); //Login(s)
 
                     if (token != result.token) {
                          const url = "https://pasteblock.herokuapp.com/api/token";
@@ -52,12 +57,12 @@ export const HeaderContain = () => {
                                  method: "POST",
                                  body: JSON.stringify(user),
                                  headers: {
-                                     "Content-Type": "application/json",
+                                    "Content-Type": "application/json",
                                  },
                              });
 
                              const resultToken = await response.json();
-                             return resultToken;
+                             
 
                          } catch (error) {
                              throw error;

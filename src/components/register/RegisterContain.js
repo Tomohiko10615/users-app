@@ -77,7 +77,6 @@ export const RegisterContain = () => {
             delete formik.values["confirmPassword"];
 
             const distritoId = formik.values.distritoId;
-            delete formik.values["distritoId"];
 
             const newUser = formik.values;
             const newClient = { usuario: newUser, distritoId: distritoId, direccion: formik.values.direccion };

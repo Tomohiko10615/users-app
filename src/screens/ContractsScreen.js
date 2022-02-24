@@ -9,9 +9,10 @@ import { useIsFocused } from "@react-navigation/native";
 
 import Service from "../Service/Service";
 import { Header } from "../components/home/Header";
+import useAuth from "../hooks/useAuth";
 
 export const ContractsScreen = () => {
-    const isFocused = useIsFocused();
+  const isFocused = useIsFocused();
   const [serviceData, setServiceData] = useState([]);
   const [inicio, setInicio] = useState(0);
   const [loaded, setLoaded] = useState(false);
@@ -21,6 +22,8 @@ export const ContractsScreen = () => {
   const [finalizado, setFinalizado] = useState(false);
 
   const [render, setRender] = useState(false);
+
+  const { JWTtoken } = useAuth();
 
   const showServiceDetails = (item, state) => {
     setServiceDetails(state);
@@ -38,6 +41,11 @@ export const ContractsScreen = () => {
     })();
   }, [finalizado]);
 
+  const myHeaders = new Headers();
+
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("Authorization", "Bearer " + JWTtoken);
+
   const getServices = async () => {
     try {
       const url =
@@ -45,9 +53,13 @@ export const ContractsScreen = () => {
         inicio +
         "&finalizado=" +
         finalizado;
-      const response = await fetch(url);
+      const response = await fetch(url, {
+        method: "GET",
+        withCredentials: true,
+        headers: myHeaders,
+      });
       const result = await response.json();
-      console.log(inicio);
+
       if (result.length != 0) {
         setServiceData([...serviceData, ...result]);
         setInicio(inicio + 5);

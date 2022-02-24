@@ -9,14 +9,21 @@ import {
 import Inbox from "../Inbox/Inbox";
 import { useNavigation, useIsFocused } from "@react-navigation/native";
 import { Header } from "../components/home/Header";
+import useAuth from "../hooks/useAuth";
 
 export const NotificationScreen = () => {
-    const [messageData, setMessageData] = useState([]);
+  const [messageData, setMessageData] = useState([]);
   const [inicio, setInicio] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [endOfData, setEndOfData] = useState(false);
   const [messageCondition, setMessageCondition] = useState(false);
   const [messageItem, setMessageItem] = useState(undefined);
+
+  const { JWTtoken } = useAuth();
+
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("Autoritzation", "Bearer " + JWTtoken);
 
   const showMessageCondition = (item) => {
     setMessageCondition(true);
@@ -27,9 +34,13 @@ export const NotificationScreen = () => {
 
   const getMessages = async () => {
     try {
-      const url =
-        "https://pasteblock.herokuapp.com/api/cliente/inbox?inicio=" + inicio;
-      const response = await fetch(url);
+      const url = "https://pasteblock.herokuapp.com/api/cliente/inbox?inicio=" + inicio;
+      const response = await fetch(url, {
+        method: "GET",
+        withCredentials: true,
+        headers: myHeaders
+      });
+
       const result = await response.json();
       if (result.length != 0) {
         setMessageData([...messageData, ...result]);
