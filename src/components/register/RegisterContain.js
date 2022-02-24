@@ -93,12 +93,10 @@ export const RegisterContain = () => {
                     }
                 );
                 const result = await response.json();
-                setLoading(false);
+
                 console.log(result);
 
-
-
-                if (result.id != null) {
+                if (result) {
                     const url = "https://pasteblock.herokuapp.com/api/token";
                     const usuario = { tokenDispositivo: token };
 
@@ -114,6 +112,9 @@ export const RegisterContain = () => {
                     } catch (error) {
                         throw error;
                     }
+
+                    setLoading(false);
+
                     const successMessage = "Te haz registrado con éxito. Puedes iniciar sesión ahora."
                     navigation.replace("SuccessNav", {
                         screen: "Success",
