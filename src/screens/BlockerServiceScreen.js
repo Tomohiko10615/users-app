@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, LogBox } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BlockerItem } from "../components/BlockersList/BlockerItem";
 import useAuth from "../hooks/useAuth";
 
 
 export const BlockerServiceScreen = ({route}) => {
+    useEffect(() => {
+        LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
+    }, []);
+
     const { service, serviceId } = route.params;
     const [blockersList, setBlockersList] = useState([]);
     
