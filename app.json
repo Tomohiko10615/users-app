@@ -29,7 +29,8 @@
       "useNextNotificationsApi": true,
       "permissions": [
         "RECEIVE_BOOT_COMPLETED"
-      ]
+      ],
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/favicon.png"
