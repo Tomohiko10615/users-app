@@ -99,7 +99,7 @@ export const HeaderContain = () => {
                 value={ formik.values.email }
                 onChangeText={ (text) => formik.setFieldValue("email", text) }
             />
-            <Text style={{ color: "#dc3545", fontSize: 14, marginVertical: 10 }}>{ formik.errors.email }</Text>
+            <Text style={{ color: "#f07470", fontSize: 14, marginVertical: 10 }}>{ formik.errors.email }</Text>
             <View style={[ styles.input, styles.customInputContainer ]}>
                 <TextInput 
                     placeholder="Contraseña"
@@ -116,7 +116,7 @@ export const HeaderContain = () => {
                     style={{ padding: 5, marginLeft: 20 }}
                 />
             </View>
-            <Text style={{ color: "#dc3545", fontSize: 14, marginVertical: 10 }}>{ formik.errors.password }</Text>
+            <Text style={{ color: "#f07470", fontSize: 14, marginVertical: 10 }}>{ formik.errors.password }</Text>
             {/**
              * Component Button Handler (Reducer handler)
              */}
