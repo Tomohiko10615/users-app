@@ -13,3 +13,7 @@ This app allows users to hire constructor professionals. They can explore profil
 | Profile screen | Services screen | Rate screen | 
 | :-------- | :------- | :------- |
 | <img src="https://github.com/Tomohiko10615/users-app/raw/master/ua-profile-screen.jpeg" width="300"> |  <img src="https://github.com/Tomohiko10615/users-app/raw/master/ua-services-screen.jpeg" width="300"> | <img src="https://github.com/Tomohiko10615/users-app/raw/master/ua-rate-screen.jpeg" width="300"> |
+
+## Collaborators
+
+Erick Flores https://github.com/erickflores10
